@@ -1,14 +1,14 @@
 /* ============================================================
-   POUSADA RECANTO DOS PÔNEIS — main.js v3
-   Komplexa Hotéis
+   POUSADA VALE DAS ARAUCÁRIAS — main.js v3
+   TEMPLATE-MODELO — substitua as constantes abaixo por cliente
    ============================================================ */
 
-const WEBHOOK_URL = 'https://webhook.cidigitalmarketing.com/webhook/7c87bd71-6c33-437f-9073-2fae80d76d2f';
-const HOTEL_NAME  = 'Pousada Recanto dos Pôneis';
-const WA_NUMBER   = '554935127136';
-const WA_MESSAGE  = 'Olá! Gostaria de mais informações sobre a Pousada Recanto dos Pôneis.';
-const BOOKING_URL = 'https://recantodosponeis.com.br/';
-const MOTOR_BASE  = 'https://recantodosponeis.com.br'; // temporário — trocar pela URL do Foco Multimídia quando disponível
+const WEBHOOK_URL = 'https://webhook.example.com/webhook/REPLACE-ME';
+const HOTEL_NAME  = 'Pousada Vale das Araucárias';
+const WA_NUMBER   = '5551999998888';
+const WA_MESSAGE  = 'Olá! Gostaria de mais informações sobre a Pousada Vale das Araucárias.';
+const BOOKING_URL = 'https://pousadavaledasaraucarias.com.br/';
+const MOTOR_BASE  = 'https://pousadavaledasaraucarias.com.br'; // substitua pela URL do motor de reservas (ex: Foco Multimídia) quando disponível
 
 // ── dataLayer GTM ──
 window.dataLayer = window.dataLayer || [];
@@ -269,7 +269,7 @@ function submitBooking(e) {
       <div class="bk-modal-box">
         <button class="bk-close" onclick="closeBooking()" aria-label="Fechar">&times;</button>
         <div class="bk-header">
-          <img src="/assets/img/logo.png" alt="${HOTEL_NAME}" width="48" height="48">
+          <img src="/assets/img/logo-placeholder.svg" alt="${HOTEL_NAME}" width="48" height="48">
           <div>
             <h3 id="bkTitle">Reserve sua Estadia</h3>
             <p>Preencha os dados e consulte disponibilidade</p>

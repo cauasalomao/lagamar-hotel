@@ -1,6 +1,8 @@
 {
+  "_template_note": "Plano editorial ficcional do template-modelo. Substitua tópicos, palavras-chave e público-alvo pelos dados do cliente real.",
+
   "editorial_strategy": {
-    "goal": "Atrair tráfego orgânico qualificado de famílias interessadas em turismo rural, Serra Catarinense e experiências com animais, convertendo em reservas diretas",
+    "goal": "Atrair tráfego orgânico qualificado de famílias interessadas em turismo rural, Serra Geral e experiências com animais, convertendo em reservas diretas",
     "tone": "Informativo e acolhedor, com CTAs sutis para reserva. Escrita em português brasileiro, familiar e caloroso, como uma conversa entre amigos.",
     "word_count": "800-1200",
     "target_keywords_per_post": 3,
@@ -10,13 +12,13 @@
     "content_pillars": [
       {
         "pillar": "Destino",
-        "description": "O que fazer, onde ir, roteiros pela Serra Catarinense e região de Rio Rufino",
-        "example_topics": ["Cachoeiras imperdíveis na Serra Catarinense", "O que fazer em Rio Rufino e arredores", "Roteiro de 3 dias na Serra Catarinense"]
+        "description": "O que fazer, onde ir, roteiros pela Serra Geral e região de Campos do Pinhão",
+        "example_topics": ["Cachoeiras imperdíveis na Serra Geral", "O que fazer em Campos do Pinhão e arredores", "Roteiro de 3 dias na Serra Geral"]
       },
       {
         "pillar": "Experiência",
         "description": "Vivências na pousada: animais, cavalgadas, pescaria, vida no campo, gastronomia serrana",
-        "example_topics": ["Passeio a cavalo na Serra Catarinense", "Pescaria em família: diversão no lago", "Colheita de frutas na serra"]
+        "example_topics": ["Passeio a cavalo na Serra Geral", "Pescaria em família: diversão no lago", "Colheita de frutas na serra"]
       },
       {
         "pillar": "Família",
@@ -25,19 +27,19 @@
       },
       {
         "pillar": "Dicas práticas",
-        "description": "Informações úteis para quem visita a Serra Catarinense",
-        "example_topics": ["O que levar para a Serra Catarinense", "Melhor época para visitar a serra", "Como chegar a Rio Rufino"]
+        "description": "Informações úteis para quem visita a Serra Geral",
+        "example_topics": ["O que levar para a Serra Geral", "Melhor época para visitar a serra", "Como chegar a Campos do Pinhão"]
       }
     ]
   },
 
   "seo_rules": {
-    "title_format": "{Título do Post} | Blog Pousada Recanto dos Pôneis",
+    "title_format": "{Título do Post} | Blog Pousada Vale das Araucárias",
     "meta_description_max_chars": 155,
     "url_slug_format": "lowercase, hifenizado, sem acentos, max 5 palavras",
     "heading_structure": "H1 único (título), H2 para seções, H3 para subseções",
     "schema_type": "BlogPosting",
-    "canonical_base": "https://recantodosponeis.com.br/blog/",
+    "canonical_base": "https://pousadavaledasaraucarias.com.br/blog/",
     "open_graph_type": "article",
     "required_meta": [
       "title", "meta description", "canonical", "og:title", "og:description",
@@ -53,66 +55,66 @@
       "CTA final (link para reserva ou contato)",
       "Links internos naturais no texto"
     ],
-    "footer_cta": "Hospede-se na Pousada Recanto dos Pôneis — seu refúgio rural na Serra Catarinense, com passeios a cavalo inclusos e natureza de tirar o fôlego."
+    "footer_cta": "Hospede-se na Pousada Vale das Araucárias — seu refúgio rural na Serra Geral, com cavalgadas inclusas e natureza de tirar o fôlego."
   },
 
   "published": [
     {
-      "topic": "Cachoeiras imperdíveis perto de Rio Rufino na Serra Catarinense",
+      "topic": "Cachoeiras imperdíveis perto de Campos do Pinhão na Serra Geral",
       "pillar": "Destino",
-      "target_keywords": ["cachoeiras serra catarinense", "cachoeira rio rufino", "cachoeiras urubici"],
-      "published_date": "2026-04-14",
-      "slug": "cachoeiras-serra-catarinense"
+      "target_keywords": ["cachoeiras serra geral", "cachoeira campos do pinhão", "cachoeiras vale dos pinhões"],
+      "published_date": "2026-04-19",
+      "slug": "cachoeiras-serra-geral"
     }
   ],
 
   "upcoming": [
     {
-      "topic": "Passeio a cavalo na Serra Catarinense: o que esperar e por que as crianças amam",
+      "topic": "Passeio a cavalo na Serra Geral: o que esperar e por que as crianças amam",
       "pillar": "Experiência",
-      "target_keywords": ["passeio a cavalo serra catarinense", "cavalgada urubici", "passeio a cavalo crianças"],
+      "target_keywords": ["passeio a cavalo serra geral", "cavalgada campos do pinhão", "passeio a cavalo crianças"],
       "target_date": "2026-04-25",
-      "slug": "passeio-cavalo-serra-catarinense"
+      "slug": "passeio-cavalo-serra-geral"
     },
     {
-      "topic": "O que fazer em Rio Rufino: guia completo para famílias",
+      "topic": "O que fazer em Campos do Pinhão: guia completo para famílias",
       "pillar": "Destino",
-      "target_keywords": ["rio rufino o que fazer", "turismo rio rufino", "rio rufino serra catarinense"],
+      "target_keywords": ["campos do pinhão o que fazer", "turismo campos do pinhão", "campos do pinhão serra geral"],
       "target_date": "2026-05-02",
-      "slug": "o-que-fazer-rio-rufino"
+      "slug": "o-que-fazer-campos-do-pinhao"
     },
     {
       "topic": "Benefícios do contato com animais para crianças: como a vida no campo transforma",
       "pillar": "Família",
-      "target_keywords": ["contato com animais crianças", "benefícios animais crianças", "fazenda crianças SC"],
+      "target_keywords": ["contato com animais crianças", "benefícios animais crianças", "fazenda crianças RS"],
       "target_date": "2026-05-09",
       "slug": "contato-animais-criancas-beneficios"
     },
     {
-      "topic": "Serra do Corvo Branco: como visitar o maior corte em rocha do Brasil",
+      "topic": "Serra do Vale Azul: como visitar o mirante mais famoso da região",
       "pillar": "Destino",
-      "target_keywords": ["serra do corvo branco", "corvo branco urubici", "serra catarinense pontos turísticos"],
+      "target_keywords": ["serra do vale azul", "mirante serra geral", "serra geral pontos turísticos"],
       "target_date": "2026-05-16",
-      "slug": "serra-corvo-branco-como-visitar"
+      "slug": "serra-vale-azul-como-visitar"
     },
     {
-      "topic": "O que levar para uma viagem à Serra Catarinense com crianças",
+      "topic": "O que levar para uma viagem à Serra Geral com crianças",
       "pillar": "Dicas práticas",
-      "target_keywords": ["o que levar serra catarinense", "viagem serra catarinense crianças", "dicas serra catarinense"],
+      "target_keywords": ["o que levar serra geral", "viagem serra geral crianças", "dicas serra geral"],
       "target_date": "2026-05-23",
-      "slug": "o-que-levar-serra-catarinense"
+      "slug": "o-que-levar-serra-geral"
     },
     {
-      "topic": "Inverno na Serra Catarinense: neve, sincelo e experiências únicas",
+      "topic": "Inverno na Serra Geral: neve, sincelo e experiências únicas",
       "pillar": "Destino",
-      "target_keywords": ["inverno serra catarinense", "neve urubici", "sincelo serra catarinense"],
+      "target_keywords": ["inverno serra geral", "neve campos do pinhão", "sincelo serra geral"],
       "target_date": "2026-05-30",
-      "slug": "inverno-serra-catarinense"
+      "slug": "inverno-serra-geral"
     },
     {
-      "topic": "Pousada pet friendly na Serra Catarinense: viaje com seu melhor amigo",
+      "topic": "Pousada pet friendly na Serra Geral: viaje com seu melhor amigo",
       "pillar": "Experiência",
-      "target_keywords": ["pousada pet friendly serra catarinense", "viajar com cachorro serra", "hotel pet SC"],
+      "target_keywords": ["pousada pet friendly serra geral", "viajar com cachorro serra", "hotel pet RS"],
       "target_date": "2026-06-06",
       "slug": "pousada-pet-friendly-serra"
     }

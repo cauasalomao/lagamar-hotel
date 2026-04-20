@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" role="img" aria-label="Logotipo">
+  <rect width="240" height="80" fill="transparent"/>
+  <g transform="translate(12,18)">
+    <path d="M22 0 L40 30 L30 30 L30 44 L14 44 L14 30 L4 30 Z" fill="#5b7a3d"/>
+  </g>
+  <text x="66" y="36" font-family="Georgia,serif" font-size="20" font-style="italic" fill="#5b7a3d" font-weight="600">Pousada</text>
+  <text x="66" y="60" font-family="system-ui,Arial,sans-serif" font-size="12" fill="#5b7a3d" letter-spacing="3" font-weight="700">LOGO AQUI</text>
+</svg>
