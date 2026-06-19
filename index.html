@@ -11,13 +11,13 @@
   <meta property="og:title" content="Hotel Lagamar | Refúgio à Beira da Represa em Varginha, Sul de Minas - MG">
   <meta property="og:description"
     content="Hotel à beira da represa em Varginha, Sul de Minas. Arquitetura em madeira de lei, suítes com vista para o lago, piscinas, sauna e pôr do sol marcante. Ideal para casais, famílias e celebrações.">
-  <meta property="og:image" content="https://www.hotellagamar.com.br/assets/img/placeholder.svg">
+  <meta property="og:image" content="https://www.hotellagamar.com.br/assets/img/fotos/por-do-sol-represa.jpg">
   <meta property="og:url" content="https://www.hotellagamar.com.br">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://www.hotellagamar.com.br/">
   <meta name="twitter:card" content="summary_large_image">
   <meta property="og:locale" content="pt_BR">
-  <meta name="twitter:image" content="https://www.hotellagamar.com.br/assets/img/placeholder.svg">
+  <meta name="twitter:image" content="https://www.hotellagamar.com.br/assets/img/fotos/por-do-sol-represa.jpg">
 
   <!-- Schema.org -->
 
@@ -45,7 +45,7 @@
   "url": "https://www.hotellagamar.com.br/",
   "telephone": "+55-35-99742-6463",
   "email": "lagamaroficial@gmail.com",
-  "image": "https://www.hotellagamar.com.br/assets/img/placeholder.svg",
+  "image": "https://www.hotellagamar.com.br/assets/img/fotos/por-do-sol-represa.jpg",
   "priceRange": "$$",
   "numberOfRooms": 24,
   "amenityFeature": [
@@ -75,7 +75,7 @@
   <!-- ═══ HEADER ═══ -->
   <header class="hdr hero-mode" id="hdr">
     <div class="hdr-inner">
-      <a href="index.html" class="logo"><img src="assets/img/logo-placeholder.svg" alt="Hotel Lagamar" class="logo-img">
+      <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="Hotel Lagamar" class="logo-img">
       </a>
       <nav class="nav">
         <a href="sobre/">Sobre</a>
@@ -108,8 +108,18 @@
   <!-- ═══ HERO ═══ -->
   <section class="hero" id="hero">
     <div class="hero-bg">
-      <img src="assets/img/placeholder.svg" alt="Vista da represa ao entardecer a partir do Hotel Lagamar, em Varginha — Sul de Minas" fetchpriority="high"
-        class="loaded">
+      <video id="heroVideo" class="hero-video loaded" autoplay muted loop playsinline preload="auto"
+        poster="assets/img/fotos/por-do-sol-represa.jpg"
+        aria-label="Vista da represa ao entardecer a partir do Hotel Lagamar, em Varginha — Sul de Minas">
+        <source src="https://customer-am8784crgp4tuk16.cloudflarestream.com/029feae2f359f1ad33f825287a81d182/downloads/default.mp4" type="video/mp4">
+      </video>
+      <audio id="heroAudio" loop preload="auto">
+        <source src="https://customer-am8784crgp4tuk16.cloudflarestream.com/029feae2f359f1ad33f825287a81d182/downloads/audio.m4a" type="audio/mp4">
+      </audio>
+      <button type="button" id="heroSoundBtn" class="hero-sound" onclick="toggleHeroSound()" aria-pressed="false" aria-label="Ligar som do vídeo">
+        <span class="hero-sound-ic" aria-hidden="true">🔇</span>
+        <span class="hero-sound-tx">Ligar som</span>
+      </button>
     </div>
     <div class="hero-ov"></div>
     <div class="hero-c">
@@ -160,7 +170,7 @@
     <div class="container">
       <div class="ab-grid">
         <div class="ab-img">
-          <img src="assets/img/placeholder.svg" alt="Fachada do Hotel Lagamar em madeira de lei, integrada à vegetação à beira da represa" loading="lazy" class="parallax">
+          <img src="assets/img/fotos/coqueiros-represa.jpg" alt="Vista da represa do Hotel Lagamar entre coqueiros, no Sul de Minas" loading="lazy" class="parallax">
         </div>
         <div class="ab-txt">
           <p class="overline">Nossa Essência</p>
@@ -190,60 +200,48 @@
         <div class="divider cx" style="background:rgba(255,255,255,.3)"></div>
       </div>
       <div class="exp-cards">
-        <div class="exp-card">
-          <div class="exp-card-img">
-            <img src="assets/img/placeholder.svg" alt="Pôr do sol refletido na represa visto da área de contemplação do hotel" loading="lazy">
-          </div>
+        <div class="exp-card txt">
+          <span class="exp-ic"><i class="ph-thin ph-sun-horizon"></i></span>
           <div class="exp-card-body">
             <h3>Pôr do Sol na Represa</h3>
             <p>O fim de tarde sobre a água é o ponto alto do dia — um cenário que se renova a cada entardecer.</p>
             <a href="experiencia/" class="exp-card-link">Saiba mais →</a>
           </div>
         </div>
-        <div class="exp-card">
-          <div class="exp-card-img">
-            <img src="assets/img/placeholder.svg" alt="Piscina externa do Hotel Lagamar com vista para o lago" loading="lazy">
-          </div>
+        <div class="exp-card txt">
+          <span class="exp-ic"><i class="ph-thin ph-swimming-pool"></i></span>
           <div class="exp-card-body">
             <h3>Piscinas & Sauna</h3>
             <p>Piscina externa, piscina aquecida e sauna para relaxar com conforto em qualquer época do ano.</p>
             <a href="experiencia/" class="exp-card-link">Saiba mais →</a>
           </div>
         </div>
-        <div class="exp-card">
-          <div class="exp-card-img">
-            <img src="assets/img/placeholder.svg" alt="Hóspedes caminhando por trilha arborizada na propriedade" loading="lazy">
-          </div>
+        <div class="exp-card txt">
+          <span class="exp-ic"><i class="ph-thin ph-person-simple-walk"></i></span>
           <div class="exp-card-body">
             <h3>Caminhadas & Trilhas</h3>
             <p>Percursos ao ar livre pela propriedade, ideais para caminhar, correr e respirar fundo.</p>
             <a href="experiencia/" class="exp-card-link">Saiba mais →</a>
           </div>
         </div>
-        <div class="exp-card">
-          <div class="exp-card-img">
-            <img src="assets/img/placeholder.svg" alt="Pessoa praticando arborismo entre as árvores do hotel" loading="lazy">
-          </div>
+        <div class="exp-card txt">
+          <span class="exp-ic"><i class="ph-thin ph-tree"></i></span>
           <div class="exp-card-body">
             <h3>Arborismo</h3>
             <p>Atividade ao ar livre em meio às árvores, para quem busca um toque de aventura na natureza.</p>
             <a href="experiencia/" class="exp-card-link">Saiba mais →</a>
           </div>
         </div>
-        <div class="exp-card">
-          <div class="exp-card-img">
-            <img src="assets/img/placeholder.svg" alt="Margem da represa com acesso direto a partir do Hotel Lagamar" loading="lazy">
-          </div>
+        <div class="exp-card txt">
+          <span class="exp-ic"><i class="ph-thin ph-waves"></i></span>
           <div class="exp-card-body">
             <h3>Acesso à Represa</h3>
             <p>Contato direto com a água e suas margens, para momentos de calma e contemplação.</p>
             <a href="experiencia/" class="exp-card-link">Saiba mais →</a>
           </div>
         </div>
-        <div class="exp-card">
-          <div class="exp-card-img">
-            <img src="assets/img/placeholder.svg" alt="Mesa de café da manhã servida com vista para o jardim e o lago" loading="lazy">
-          </div>
+        <div class="exp-card txt">
+          <span class="exp-ic"><i class="ph-thin ph-coffee"></i></span>
           <div class="exp-card-body">
             <h3>Café da Manhã</h3>
             <p>Comece o dia bem, com um café da manhã servido em meio ao verde e à vista da represa.</p>
@@ -263,35 +261,27 @@
         <div class="divider cx"></div>
         <p>Todas as suítes seguem o mesmo padrão: o Apartamento 2 Quartos – Vista Lago, com 70m², varanda voltada para o lago, o jardim e o rio. Conforto pensado para casais, famílias e pequenos grupos.</p>
       </div>
-      <div class="rp-g rp-g-4">
-        <a href="acomodacoes/" class="rp-c">
-          <img src="assets/img/placeholder.svg" alt="Varanda da suíte do Hotel Lagamar com vista para o lago" loading="lazy">
-          <div class="rp-info">
-            <h3>Varanda com Vista</h3>
-            <span>Lago, jardim e rio</span>
-          </div>
-        </a>
-        <a href="acomodacoes/" class="rp-c">
-          <img src="assets/img/placeholder.svg" alt="Suíte com cama king size do Apartamento 2 Quartos do Hotel Lagamar" loading="lazy">
-          <div class="rp-info">
-            <h3>Suíte King</h3>
-            <span>Conforto para o casal</span>
-          </div>
-        </a>
-        <a href="acomodacoes/" class="rp-c">
-          <img src="assets/img/placeholder.svg" alt="Segundo quarto do apartamento com cama de casal e cama de solteiro" loading="lazy">
-          <div class="rp-info">
-            <h3>Segundo Quarto</h3>
-            <span>Casal + solteiro</span>
-          </div>
-        </a>
-        <a href="acomodacoes/" class="rp-c">
-          <img src="assets/img/placeholder.svg" alt="Interior amplo do apartamento de 70m² em madeira de lei" loading="lazy">
-          <div class="rp-info">
-            <h3>70m² de Espaço</h3>
-            <span>Para até 5 pessoas</span>
-          </div>
-        </a>
+      <div class="rfeat-cards">
+        <div class="rfeat-card">
+          <span class="rfeat-ic"><i class="ph-thin ph-mountains"></i></span>
+          <h3>Varanda com Vista</h3>
+          <span>Lago, jardim e rio</span>
+        </div>
+        <div class="rfeat-card">
+          <span class="rfeat-ic"><i class="ph-thin ph-bed"></i></span>
+          <h3>Suíte King</h3>
+          <span>Conforto para o casal</span>
+        </div>
+        <div class="rfeat-card">
+          <span class="rfeat-ic"><i class="ph-thin ph-bed"></i></span>
+          <h3>Segundo Quarto</h3>
+          <span>Casal + solteiro</span>
+        </div>
+        <div class="rfeat-card">
+          <span class="rfeat-ic"><i class="ph-thin ph-ruler"></i></span>
+          <h3>70m² de Espaço</h3>
+          <span>Para até 5 pessoas</span>
+        </div>
       </div>
       <div style="text-align:center;margin-top:3rem">
         <a href="acomodacoes/" class="btn-green">Conhecer a Acomodação →</a>
@@ -301,7 +291,7 @@
 
   <!-- ═══ EVENTOS PREVIEW ═══ -->
   <section class="cta-hero">
-    <img src="assets/img/placeholder.svg" alt="Cerimônia de casamento ao ar livre com vista para a represa no Hotel Lagamar" class="cta-hero-bg loaded">
+    <img src="assets/img/fotos/por-do-sol-represa.jpg" alt="Pôr do sol sobre a represa no Hotel Lagamar, cenário para celebrações" class="cta-hero-bg loaded">
     <div class="cta-hero-ov"></div>
     <div class="container" style="position:relative;z-index:2;text-align:center">
       <p class="overline" style="color:rgba(255,255,255,.65);text-align:center;display:block;margin:0 auto">Celebrações na natureza</p>
@@ -342,7 +332,7 @@
 
   <!-- ═══ CTA SEÇÃO ═══ -->
   <section class="cta-hero">
-    <img src="assets/img/placeholder.svg" alt="Casal contemplando o entardecer na beira da represa do Hotel Lagamar" class="cta-hero-bg loaded">
+    <img src="assets/img/fotos/represa-entardecer.jpg" alt="Entardecer na beira da represa do Hotel Lagamar" class="cta-hero-bg loaded">
     <div class="cta-hero-ov"></div>
     <div class="container" style="position:relative;z-index:2;text-align:center">
       <p class="overline" style="color:rgba(255,255,255,.65);text-align:center;display:block;margin:0 auto">Reserve sua

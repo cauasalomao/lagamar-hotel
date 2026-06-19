@@ -118,6 +118,11 @@ img.loaded { opacity:1; }
 .hero { position:relative; height:calc(100vh / 0.8); min-height:600px; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; }
 .hero-bg { position:absolute; inset:0; }
 .hero-bg img { width:100%; height:100%; object-fit:cover; opacity:1; }
+.hero-bg video.hero-video { width:100%; height:100%; object-fit:cover; opacity:1; display:block; }
+.hero-sound { position:absolute; bottom:2.2rem; right:2.2rem; z-index:3; display:inline-flex; align-items:center; gap:.5rem; padding:.6rem 1rem; background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.4); color:#fff; font-family:var(--font-body); font-size:.68rem; letter-spacing:.16em; text-transform:uppercase; font-weight:600; cursor:pointer; border-radius:40px; backdrop-filter:blur(4px); transition:background .3s,border-color .3s; }
+.hero-sound:hover { background:rgba(0,0,0,.65); border-color:rgba(255,255,255,.7); }
+.hero-sound .hero-sound-ic { font-size:.9rem; line-height:1; }
+@media (max-width:640px){ .hero-sound { bottom:1.4rem; right:1.4rem; padding:.5rem .8rem; } .hero-sound .hero-sound-tx { display:none; } }
 .hero-ov { position:absolute; inset:0; background:rgba(0,0,0,.55); }
 .hero-c { position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 clamp(1.5rem,4vw,3rem); width:100%; gap:clamp(1.4rem,3vh,2.2rem); }
 .hero-overline { font-family:var(--font-body); font-size:.72rem; letter-spacing:.28em; text-transform:uppercase; color:rgba(255,255,255,.78); font-weight:600; display:block; margin:0; }
@@ -163,7 +168,7 @@ img.loaded { opacity:1; }
 
 /* ── EXPERIÊNCIAS PREVIEW ── */
 .exp-section { background:#5d5145; }
-.exp-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; margin-top:clamp(2rem,4vw,3rem); }
+.exp-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-top:clamp(2rem,4vw,3rem); }
 .exp-card { display:flex; flex-direction:column; }
 .exp-card-img { overflow:hidden; border-radius:10px; aspect-ratio:3/4; }
 .exp-card-img img { width:100%; height:100%; object-fit:cover; transition:transform .5s var(--ease); }
@@ -180,6 +185,10 @@ img.loaded { opacity:1; }
 .aud-card:hover img { transform:scale(1.06); }
 .aud-ov { position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.72) 0%, rgba(0,0,0,.2) 50%, rgba(0,0,0,0) 100%); pointer-events:none; }
 .aud-label { position:absolute; left:0; right:0; bottom:clamp(1.2rem,3vw,2rem); text-align:center; color:#fff; font-family:var(--font-display); font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:400; line-height:1.1; letter-spacing:.01em; text-shadow:0 2px 12px rgba(0,0,0,.5); padding:0 1rem; }
+/* Card de público sem foto: gradiente da marca + ícone + rótulo */
+.aud-card.txt { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:.9rem; background:linear-gradient(155deg,#7a6652 0%,#bea178 100%); padding:2rem; }
+.aud-card.txt .aud-ic { font-size:3.2rem; color:#fff; line-height:1; }
+.aud-card.txt .aud-label { position:static; text-shadow:none; bottom:auto; }
 
 /* ── QUARTOS PREVIEW ── */
 .rp-g { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:clamp(2.5rem,5vw,4rem); }
@@ -192,7 +201,7 @@ img.loaded { opacity:1; }
 .rp-info span { font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.72); }
 
 /* ── PAGE HERO (subpáginas) ── */
-.pg-hero { position:relative; height:55vh; min-height:380px; display:flex; align-items:flex-end; overflow:hidden; }
+.pg-hero { position:relative; height:55vh; min-height:380px; display:flex; align-items:flex-end; overflow:hidden; background:linear-gradient(150deg,#5d5145 0%,#7a6652 45%,#bea178 100%); }
 .pg-hero > img { position:absolute; inset:0; width:100%; height:115%; object-fit:cover; }
 .pg-hero::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(35,37,22,.72) 0%,rgba(35,37,22,.18) 60%,transparent 100%); }
 .pg-hero-c { position:relative; z-index:2; color:#fff; padding:3rem clamp(1.5rem,4vw,3rem); max-width:1400px; margin:0 auto; width:100%; }
@@ -210,6 +219,7 @@ img.loaded { opacity:1; }
 .rc-img img { width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease); }
 .rc:hover .rc-img img { transform:scale(1.06); }
 .rc-tag { position:absolute; top:1rem; left:1rem; background:var(--accent); color:#fff; padding:.25rem .75rem; font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; font-weight:700; }
+.rc-wide { grid-column:1/-1; border-left:3px solid var(--accent); }
 .rc-b { padding:1.4rem 1.6rem; }
 .rc-b h3 { font-size:clamp(1rem,1.8vw,1.5rem); margin-bottom:.5rem; }
 .rc-b p { font-size:.86rem; margin-bottom:.8rem; max-width:100%; }
@@ -332,7 +342,8 @@ img.loaded { opacity:1; }
 .bk-close { position:absolute; top:1rem; right:1rem; background:var(--surface-light); border:none; width:36px; height:36px; border-radius:50%; font-size:1.4rem; cursor:pointer; z-index:2; display:flex; align-items:center; justify-content:center; line-height:1; color:var(--text); transition:background .2s; }
 .bk-close:hover { background:var(--border); }
 .bk-header { padding:1.5rem 1.8rem 0; display:flex; gap:1rem; align-items:center; }
-.bk-header img { border-radius:8px; object-fit:contain; background:var(--surface-light); }
+.bk-header img { object-fit:contain; }
+.bk-header img.bk-logo { height:38px; width:auto; }
 .bk-header h3 { font-family:var(--font-body); font-size:1.05rem; font-weight:700; margin:0 0 .15rem; color:var(--text); letter-spacing:.02em; }
 .bk-header p  { font-size:.78rem; color:var(--text-muted); margin:0; line-height:1.4; }
 .bk-form { padding:1.3rem 1.8rem 1.6rem; }
@@ -479,11 +490,25 @@ footer { background:var(--text); color:rgba(255,255,255,.8); padding:clamp(4rem,
   .wa-box,.wa-modal-box { width:100%!important; max-width:420px; }
 }
 
-/* Logo branca no hero (filtro inverte para branco) */
-.logo-img { height:70px; width:auto; filter: brightness(0) invert(1); transition: filter .3s; }
+/* Logo PNG transparente. Branca sobre o hero/footer (escuros); a versão
+   dourada (logo-gold.png) é trocada via JS quando o header fica sólido (claro). */
+.logo-img { height:64px; width:auto; transition: opacity .3s; }
 
-/* Logo colorida/original quando header fica sólido */
-.hdr.solid .logo-img { filter: none; }
+/* ── CARDS SEM FOTO ──
+   Adaptação enquanto não há material fotográfico de quartos/atividades:
+   os cards passam a ser text-forward com ícone, mantendo o ritmo do grid. */
+/* Experiências (seção escura) */
+.exp-card.txt { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.14); border-radius:10px; padding:2rem 1.6rem; transition:border-color .3s,background .3s; }
+.exp-card.txt:hover { border-color:rgba(190,161,120,.5); background:rgba(255,255,255,.06); }
+.exp-card.txt .exp-ic { font-size:2.1rem; color:var(--accent); margin-bottom:.9rem; display:block; line-height:1; }
+.exp-card.txt .exp-card-body { padding:0; }
+/* Acomodações (seção clara) — cards de características */
+.rfeat-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; margin-top:clamp(2.5rem,5vw,4rem); }
+.rfeat-card { background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:2.4rem 1.4rem; text-align:center; }
+.rfeat-card .rfeat-ic { font-size:2.2rem; color:var(--accent); display:block; margin-bottom:.9rem; line-height:1; }
+.rfeat-card h3 { margin:0 0 .35rem; font-size:1.1rem; }
+.rfeat-card span { font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); }
+@media(max-width:768px){ .rfeat-cards{ grid-template-columns:1fr 1fr; } }
 
 /* ── ANTI-ZOOM MOBILE (iOS) ──
    iOS zooms the page when a focused input has font-size < 16px.

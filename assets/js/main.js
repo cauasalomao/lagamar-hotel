@@ -39,10 +39,20 @@ async function sendToWebhook(payload) {
 
 // ── HEADER SCROLL ──
 const hdr = document.getElementById('hdr');
+const hdrLogo = hdr ? hdr.querySelector('.logo-img') : null;
+// branca sobre hero (transparente/escuro), dourada quando o header fica sólido (claro)
+const logoWhite = hdrLogo ? hdrLogo.getAttribute('src').replace('logo-gold.png', 'logo.png') : '';
+const logoGold = logoWhite.replace('logo.png', 'logo-gold.png');
+function setHdrLogo() {
+  if (!hdrLogo) return;
+  hdrLogo.setAttribute('src', hdr.classList.contains('solid') ? logoGold : logoWhite);
+}
+setHdrLogo();
 if (hdr && hdr.classList.contains('hero-mode')) {
   window.addEventListener('scroll', () => {
     if (window.scrollY > 80) { hdr.classList.add('solid'); hdr.classList.remove('hero-mode'); }
     else { hdr.classList.remove('solid'); hdr.classList.add('hero-mode'); }
+    setHdrLogo();
   }, { passive: true });
 }
 
@@ -281,7 +291,7 @@ function submitBooking(e) {
       <div class="bk-modal-box">
         <button class="bk-close" onclick="closeBooking()" aria-label="Fechar">&times;</button>
         <div class="bk-header">
-          <img src="/assets/img/logo-placeholder.svg" alt="${HOTEL_NAME}" width="48" height="48">
+          <img src="/assets/img/logo-gold.png" alt="${HOTEL_NAME}" class="bk-logo">
           <div>
             <h3 id="bkTitle">Reserve sua Estadia</h3>
             <p>Preencha os dados e finalize pelo WhatsApp</p>
@@ -333,3 +343,30 @@ function submitBooking(e) {
   bk?.addEventListener('click', e => { if (e.target === bk) closeBooking(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && bk?.classList.contains('open')) closeBooking(); });
 })();
+
+/* ── Som do vídeo do hero ──
+   O vídeo de fundo toca mudo (autoplay exige muted). O áudio vive num <audio>
+   separado, sincronizado com o vídeo. O botão liga/desliga e mantém o sync. */
+function toggleHeroSound() {
+  const v = document.getElementById('heroVideo');
+  const a = document.getElementById('heroAudio');
+  const btn = document.getElementById('heroSoundBtn');
+  if (!a || !btn) return;
+  const ic = btn.querySelector('.hero-sound-ic');
+  const tx = btn.querySelector('.hero-sound-tx');
+  const isOn = btn.getAttribute('aria-pressed') === 'true';
+  if (isOn) {
+    a.pause();
+    btn.setAttribute('aria-pressed', 'false');
+    btn.setAttribute('aria-label', 'Ligar som do vídeo');
+    if (ic) ic.textContent = '🔇';
+    if (tx) tx.textContent = 'Ligar som';
+  } else {
+    if (v) { try { a.currentTime = v.currentTime % (a.duration || v.currentTime + 1); } catch (e) {} }
+    a.play().catch(() => {});
+    btn.setAttribute('aria-pressed', 'true');
+    btn.setAttribute('aria-label', 'Desligar som do vídeo');
+    if (ic) ic.textContent = '🔊';
+    if (tx) tx.textContent = 'Desligar som';
+  }
+}
