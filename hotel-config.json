@@ -1,333 +1,176 @@
 {
-  "_template_note": "Template-modelo fictício. Substitua todos os valores por dados do cliente real ao duplicar este projeto. Consulte README.md para o passo a passo de replicação.",
+  "_note": "Fonte de verdade do Hotel Lagamar (Varginha/MG). Seeded a partir do briefing estratégico. Campos marcados REPLACE-ME / TODO ainda precisam dos dados reais do cliente. Mantenha em sincronia com as constantes do topo de assets/js/main.js. DESIGN: paleta/tipografia oficiais pendentes — o cliente vai enviar; até lá os tokens em `design` continuam os do template base.",
 
   "hotel": {
-    "name": "Pousada Vale das Araucárias",
-    "tagline": "Seu refúgio rural autêntico na Serra Geral",
-    "description_short": "Pousada rural em Campos do Pinhão, Serra Geral - RS. Chalés aconchegantes entre araucárias, cavalgadas inclusas e contato direto com a natureza e animais.",
-    "description_long": "A Pousada Vale das Araucárias nasceu em 2019 da transformação de um sítio familiar em um refúgio rural acolhedor. Localizada em Campos do Pinhão, na Serra Geral do Rio Grande do Sul, a pousada oferece chalés completos em madeira rústica, cavalgadas e passeios de pônei inclusos na diária, pescaria no lago, quadriciclo e uma infinidade de atividades ao ar livre. É o lugar ideal para famílias que buscam reconectar-se com a natureza, proporcionar experiências únicas com animais para as crianças e viver momentos autênticos de vida no campo.",
-    "style": "Rural autêntico, rústico acolhedor, vida no campo, contato com animais",
-    "target_audience": "Famílias com filhos pequenos ou adolescentes (35-45 anos) que buscam conexão com a natureza, experiências com animais e vida no campo. Também famílias com crianças autistas e grupos de amigos.",
-    "tone": "Acolhedor, familiar, autêntico, caloroso e próximo — como receber amigos em casa. Sem formalidade, com carinho genuíno."
+    "name": "Hotel Lagamar",
+    "tagline": "Um refúgio em meio à natureza, onde a vista e o acolhimento transformam momentos em memórias",
+    "description_short": "Hotel à beira da represa em Varginha, Minas Gerais. Arquitetura em madeira de lei, integração total com a natureza e atendimento acolhedor para casais, famílias e quem busca desacelerar.",
+    "description_long": "Adquirido em 2009 por seu atual proprietário — encantado pela raridade da vista da propriedade — o Hotel Lagamar foi sendo desenvolvido para proporcionar experiências memoráveis em meio à natureza. Localizado em uma região tranquila de Minas Gerais, com vista privilegiada para a represa e estrutura construída em madeira de lei, é um refúgio para casais, famílias e pessoas que valorizam o contato com áreas verdes, o pôr do sol e o acolhimento. Com 24 suítes (e expansão planejada para 50), piscina externa e aquecida, sauna, arborismo, caminhadas e acesso à represa, o hotel também recebe casamentos, bodas e celebrações em meio à natureza.",
+    "founding_principle": "Criar momentos inesquecíveis através do acolhimento, do atendimento excepcional e de uma estrutura que valoriza os momentos mais importantes da vida dos hóspedes e visitantes.",
+    "style": "Natureza, madeira de lei, vista para a represa, acolhimento familiar — autêntico e contemplativo, sem ostentação.",
+    "target_audience": "Casais (incluindo casais jovens), famílias e pessoas idosas que valorizam a natureza e buscam desacelerar. Também atende o mercado de eventos e celebrações.",
+    "not_desired_audience": "Consumidores focados em ostentação e luxo; pessoas que não gostam de animais; perfis que valorizam exclusivamente experiências de alto padrão sofisticado.",
+    "tone": "Acolhedor, natural e humanizado. Foco em natureza, família, contemplação, bem-estar e celebrações. Nunca formal nem ostensivo."
+  },
+
+  "brand_restrictions": {
+    "_note": "Restrições estratégicas do briefing. NUNCA usar este vocabulário/posicionamento ao escrever conteúdo do site ou blog.",
+    "avoid_words": [
+      "luxo", "luxuoso", "exclusividade elitizada", "sofisticação ostensiva",
+      "hotelaria de luxo", "premium", "ostentação", "status social", "alto padrão sofisticado"
+    ],
+    "avoid_positioning": [
+      "Comparações com resorts de alto luxo",
+      "Comunicação baseada em status social",
+      "Apelo de exclusividade financeira"
+    ],
+    "brand_essence": [
+      "Natureza", "Acolhimento", "Experiências memoráveis", "Família",
+      "Conexão entre pessoas", "Contemplação", "Bem-estar", "Celebrações especiais"
+    ]
   },
 
   "contact": {
-    "phone": "(51) 99999-8888",
-    "phone_international": "+55-51-99999-8888",
-    "email": "contato@pousadavaledasaraucarias.com.br",
-    "wa_number": "5551999998888",
-    "instagram": "pousadavaledasaraucarias",
-    "instagram_url": "https://instagram.com/pousadavaledasaraucarias"
+    "phone": "REPLACE-ME",
+    "phone_international": "REPLACE-ME",
+    "email": "REPLACE-ME",
+    "wa_number": "REPLACE-ME (formato 55 + DDD + número, sem pontuação)",
+    "instagram": "REPLACE-ME",
+    "instagram_url": "REPLACE-ME",
+    "_note": "WhatsApp é o principal canal de conversão (briefing). Atendimento humanizado e contato direto por e-mail também."
   },
 
   "address": {
-    "street": "RS 453 Km 58, Estrada do Pinhal 001",
-    "neighborhood": "Vale dos Pinhões",
-    "city": "Campos do Pinhão",
-    "state": "RS",
-    "zip": "95270-000",
+    "street": "REPLACE-ME",
+    "neighborhood": "REPLACE-ME",
+    "city": "Varginha",
+    "state": "MG",
+    "zip": "REPLACE-ME",
     "country": "BR",
     "coordinates": {
-      "lat": -28.8700,
-      "lng": -50.6200
-    }
+      "lat": "REPLACE-ME",
+      "lng": "REPLACE-ME"
+    },
+    "_note": "Região tranquila de MG, à beira da represa. ~70km de São Thomé das Letras, ~200km de Capitólio."
   },
 
   "business": {
-    "cnpj": "00.000.000/0001-00",
-    "number_of_units": 4,
-    "checkin_time": "15:00",
-    "checkout_time": "12:00",
-    "price_range": "$$",
-    "average_daily_rate": "R$ 890,00",
-    "direct_booking_rate": "90%"
+    "cnpj": "REPLACE-ME",
+    "number_of_units": 24,
+    "number_of_units_planned": 50,
+    "acquired_year": 2009,
+    "checkin_time": "TODO",
+    "checkout_time": "TODO",
+    "average_daily_rate": "TODO",
+    "direct_booking_rate": "TODO"
   },
 
-  "mission_vision_values": {
-    "mission": "Atender nossos hóspedes com excelência, proporcionar conforto e experiências marcantes com segurança, fortalecendo parcerias locais e a cultura da Serra Geral.",
-    "vision": "Ser referência em pousada rural na Serra Geral do Rio Grande do Sul, reconhecida pelos hóspedes, comunidade e fornecedores pela excelência no atendimento, pela integração com o território e pelo crescimento sustentável.",
-    "values": [
-      "Preservação e respeito à fauna e à flora da Mata Atlântica e das araucárias",
-      "Tratar com respeito, ética e honestidade os colaboradores, fornecedores e hóspedes",
-      "Respeito à diversidade humana e cultural",
-      "Valorização da cultura serrana e dos produtores locais"
-    ]
-  },
+  "credibility": [
+    "Placa de homenagem do Governador",
+    "Depoimentos reais de hóspedes",
+    "Histórico consolidado da propriedade (desde 2009)"
+  ],
 
   "accommodations": [
     {
-      "category": "luxo",
-      "name": "Chalé Mirante",
-      "label": "Para casais exigentes",
-      "capacity": "1 casal + até 2 filhos pequenos",
-      "area": "100m²",
+      "category": "familia",
+      "name": "Apartamento 2 Quartos – Vista Lago",
+      "label": "Para famílias e pequenos grupos",
+      "capacity": "Até 5 pessoas (casal + casal/2 + criança)",
+      "area": "70m²",
       "highlights": [
-        "Banheira de hidromassagem com cromoterapia",
+        "Varanda com vista para o lago, o jardim e o rio",
+        "Suíte com cama king size",
+        "Segundo quarto com cama de casal e cama de solteiro",
+        "Duas casas de banho privativas",
         "Ar-condicionado",
-        "Lareira a lenha",
-        "Cozinha completa com cooktop e cafeteira",
-        "Cama Queen de alto padrão com dossel",
-        "Mezanino com 2 camas box solteiro",
-        "Smart TV com Netflix",
-        "Internet 100mb",
-        "Sacada com vista para o pôr do sol",
-        "Churrasqueira de alvenaria",
-        "Redes na varanda e no bosque",
-        "À beira de araucárias centenárias"
-      ],
-      "image": "assets/img/placeholder.svg"
-    },
-    {
-      "category": "familia",
-      "name": "Chalé Araucária",
-      "label": "Para 2 famílias",
-      "capacity": "Até 6 pessoas (2 casais + 1 filho cada)",
-      "highlights": [
-        "Vista para o lago dos pinhões",
-        "2 quartos com 2 camas de casal cada",
-        "Ar-condicionado em cada quarto",
-        "Deck com vista para a mata",
-        "Cozinha conjugada com sala",
-        "Smart TV com Netflix",
-        "Internet 100mb",
-        "Fogão a lenha e a gás",
-        "Churrasqueira de alvenaria",
-        "Lareira"
-      ],
-      "image": "assets/img/placeholder.svg"
-    },
-    {
-      "category": "familia",
-      "name": "Chalé Rancho",
-      "label": "Para famílias com crianças",
-      "capacity": "Até 6 pessoas (2 casais + 1 filho cada)",
-      "highlights": [
-        "Campo gramado com pôneis e cavalos livres",
-        "2 quartos com 2 camas de casal cada",
-        "Ar-condicionado em um quarto, varanda no outro",
-        "Cozinha conjugada com sala",
-        "Internet 100mb",
-        "Fogão a lenha e a gás",
-        "Churrasqueira",
-        "Lareira",
-        "Gangorra, bola, vôlei para crianças",
-        "Contato direto com pôneis"
-      ],
-      "image": "assets/img/placeholder.svg"
-    },
-    {
-      "category": "grupo",
-      "name": "Casarão Pinhão",
-      "label": "Para grupos e famílias grandes",
-      "capacity": "Até 12 pessoas",
-      "highlights": [
-        "3 quartos com ar-condicionado",
-        "Cama de casal + triliche por quarto",
-        "Sofá-cama na sala",
-        "2 banheiros com aquecimento a gás",
-        "Lareira central",
-        "Fogão a lenha e a gás",
-        "Geladeira + freezer + micro-ondas",
-        "Sala de jogos com sinuca e pebolim",
-        "Churrasqueira com espetos e grelha",
-        "Ideal para reencontros, encontros de família e grupos de amigos"
+        "TV de tela plana",
+        "Minibar",
+        "Wi-Fi gratuito"
       ],
       "image": "assets/img/placeholder.svg"
     }
   ],
+  "_accommodations_note": "O briefing só detalhou a categoria 'Apartamento 2 Quartos – Vista Lago'. O hotel tem 24 suítes em mais categorias — solicitar ao cliente as demais (nome, capacidade, área, comodidades, fotos) antes de montar a página /acomodacoes/.",
 
-  "amenities_all_units": [
-    "Cozinha completa",
-    "Churrasqueira",
-    "Lareira",
-    "Varanda ampla",
-    "Redes para descanso",
-    "Roupas de cama fornecidas",
-    "Lenha para lareira/fogão (2 caixas inclusas)"
+  "experiences": [
+    "Piscina externa",
+    "Piscina aquecida",
+    "Sauna",
+    "Arborismo",
+    "Caminhadas",
+    "Corridas ao ar livre",
+    "Acesso à represa",
+    "Contemplação do pôr do sol",
+    "Café da manhã",
+    "Curadoria de restaurantes da região"
   ],
 
   "differentials": [
-    "Cavalgadas e passeios de pônei inclusos na diária, sem custo adicional",
-    "Contato direto com animais: pôneis, cavalos, patos, gansos, galinhas, ovelhas",
-    "Experiência autêntica de vida no campo entre araucárias centenárias",
-    "Atendimento altamente personalizado — hóspedes se tornam amigos",
-    "Forte conexão emocional — alto índice de retorno",
-    "Ambiente ideal para crianças, incluindo crianças autistas",
-    "Pet friendly (com regras e taxa)"
+    "Vista privilegiada para a represa",
+    "Arquitetura em madeira de lei integrada à natureza",
+    "Ambiente acolhedor e familiar",
+    "Pôr do sol como experiência marcante",
+    "Espaços contemplativos para desacelerar",
+    "Atendimento humanizado"
   ],
 
-  "activities": {
-    "free": [
-      "Cavalgadas e passeios de pônei",
-      "Pescaria no lago (carpas, traíras, lambaris)",
-      "Canoa no lago",
-      "Casinha na árvore",
-      "Carrinho de correr morro",
-      "Passeio de bicicleta (adulto e infantil)",
-      "Balanço panorâmico",
-      "Gangorra rústica",
-      "Parquinho infantil",
-      "Alimentação dos pôneis",
-      "Fotos com os pôneis",
-      "Colher ovos do galinheiro",
-      "Alimentar o porquinho",
-      "Colheita de uva e amora (jan-mar)",
-      "Pinhão (abril-junho)",
-      "Contato com animais da pousada",
-      "Passeio de carretinha puxada pelo quadriciclo"
+  "events": {
+    "_note": "Vertical estratégica relevante — o hotel atende eventos além da hospedagem.",
+    "types": [
+      "Casamentos",
+      "Bodas",
+      "Chá revelação",
+      "Confraternizações empresariais",
+      "Eventos corporativos",
+      "Celebrações familiares"
     ],
-    "paid": [
-      {
-        "name": "Quadriciclo",
-        "price": "R$ 75,00 (15min) ou R$ 300,00 (1h)",
-        "details": "Máximo 2 pessoas acima de 16 anos"
-      },
-      {
-        "name": "Passeio de carretinha adicional",
-        "price": "R$ 100,00"
-      }
-    ]
+    "space": "Espaço para eventos em meio à natureza, com vista para a represa."
   },
-
-  "packages": [
-    {
-      "name": "Pacote Romântico",
-      "description": "Ideal para lua de mel, aniversário de casamento, pedidos de noivado ou renovação conjugal",
-      "includes": [
-        "Decoração romântica com pétalas de rosa",
-        "Espumante nacional 750ml com champanheira e gelo",
-        "Garrafa de vinho de altitude 750ml",
-        "Chocolates",
-        "Frutas da estação"
-      ]
-    },
-    {
-      "name": "Pacote de Aniversário",
-      "description": "Celebre com decoração e guloseimas",
-      "includes": [
-        "Decoração com balões",
-        "Pipoca, gelatina, guloseimas",
-        "1 bolo médio (8 fatias)",
-        "Refrigerantes"
-      ]
-    }
-  ],
-
-  "pet_policy": {
-    "allowed": true,
-    "fee": "R$ 100,00 por diária, por pet",
-    "max_pets": 1,
-    "rules": [
-      "Não deixar o pet sozinho no chalé",
-      "Cães sempre na guia ou no colo (há cães soltos na pousada)",
-      "Cuidados com limpeza e higiene",
-      "Evitar ruídos que perturbem outros hóspedes",
-      "Danos provocados serão cobrados no check-out"
-    ]
-  },
-
-  "food_policy": "Não fornecemos alimentação. Chalés e casarão possuem cozinha completa. Mercado rural a 3km e mercado maior a 8km no centro de Campos do Pinhão. Pizzaria Nona faz delivery (51-3279-8888). Café da manhã previsto com conclusão do novo espaço gourmet.",
 
   "nearby_attractions": [
     {
-      "name": "Cachoeira do Vale",
-      "distance": "5km + trilha de 45min",
-      "entry": "R$ 10,00 por pessoa"
+      "name": "São Thomé das Letras",
+      "distance": "~70km",
+      "note": "Destino turístico místico, conhecido pelas pedras e mirantes."
     },
     {
-      "name": "Cachoeira dos Pinheirais",
-      "distance": "14km + trilha de 2km",
-      "entry": "Gratuita"
-    },
-    {
-      "name": "Morro do Alvorecer",
-      "distance": "~30km",
-      "entry": "R$ 15,00 por pessoa"
-    },
-    {
-      "name": "Cascata das Araucárias",
-      "distance": "30km",
-      "entry": "Paga"
-    },
-    {
-      "name": "Morro dos Pinhais",
-      "distance": "36km",
-      "entry": "Gratuita",
-      "note": "1.700m de altitude, fenômeno do Sincelo no inverno"
-    },
-    {
-      "name": "Serra do Vale Azul",
-      "distance": "48km pela RS 453",
-      "entry": "Gratuita",
-      "note": "Mirante panorâmico com corte em rocha"
-    },
-    {
-      "name": "Cascata Congelante",
-      "distance": "30km",
-      "entry": "Gratuita",
-      "note": "Congela no inverno com temperaturas negativas"
-    },
-    {
-      "name": "Pedra Alta / Mirante da Serra",
-      "distance": "50km",
-      "entry": "Agendamento prévio",
-      "note": "1.800m, segundo cume mais alto da região"
+      "name": "Capitólio",
+      "distance": "~200km",
+      "note": "Cânions e Lago de Furnas."
     }
   ],
+  "_attractions_note": "Briefing cita apenas São Thomé das Letras e Capitólio. Complementar com atrações da região de Varginha (Circuito das Águas, Sul de Minas) ao montar /localizacao/.",
 
-  "local_restaurants": [
-    {
-      "name": "Galpão da Serra GastroPub",
-      "city": "Campos do Pinhão",
-      "hours": "Seg-Dom 18:30–23:30",
-      "specialty": "Lanches artesanais, petiscos e pizzas com massa caseira",
-      "instagram": "https://www.instagram.com/galpaodaserra/"
-    },
-    {
-      "name": "Pizzaria Nona",
-      "city": "Campos do Pinhão",
-      "hours": "Seg-Sáb 11:30–14h / Seg-Dom 18:30–00:00",
-      "specialty": "Buffet almoço, lanches e pizzas à noite, delivery disponível",
-      "delivery_phone": "51-3279-8888",
-      "instagram": "https://www.instagram.com/pizzarianona/"
-    },
-    {
-      "name": "Vinícola Alto Pinhão",
-      "city": "Vale dos Pinhões",
-      "specialty": "Experiência enogastronômica, vinhos de altitude",
-      "website": "http://www.altopinhao.com.br/"
-    },
-    {
-      "name": "Restaurante Montês",
-      "city": "Campos do Pinhão",
-      "hours": "Ter-Sáb 12–15h e 19–22h / Dom 12–15h"
-    }
-  ],
-
-  "policies": {
-    "children": "Não pagam de 0 a 2 anos",
-    "payment": "Até 12x nos cartões de crédito",
-    "firewood": "2 caixas inclusas, adicional R$ 30,00/caixa",
-    "towels": "Hóspedes devem trazer toalhas de banho e rosto",
-    "charcoal": "Trazer carvão para churrasqueira"
-  },
+  "local_restaurants": [],
+  "_restaurants_note": "Briefing menciona 'curadoria de restaurantes da região' como experiência, mas não lista nomes. Solicitar a lista ao cliente.",
 
   "expansion_planned": [
-    "Piscina aquecida",
-    "Piscina infantil",
-    "Hidromassagem externa",
-    "Serviço de café da manhã"
+    "Expansão de 24 para 50 suítes"
+  ],
+
+  "marketing_done": [
+    "Google Ads (bom desempenho)",
+    "Meta Ads / Facebook e Instagram (bons resultados)",
+    "E-mail marketing (mala direta)"
+  ],
+
+  "objectives": [
+    "Aumentar as reservas na baixa temporada",
+    "Aumentar a taxa de ocupação",
+    "Atrair públicos de outras regiões do país"
   ],
 
   "integrations": {
     "webhook_url": "https://webhook.example.com/webhook/REPLACE-ME",
     "gtm_id": "",
-    "booking_engine_url": "https://pousadavaledasaraucarias.com.br/",
+    "booking_engine_url": "REPLACE-ME",
     "maps_embed_url": "",
-    "domain": "https://pousadavaledasaraucarias.com.br"
+    "domain": "REPLACE-ME"
   },
 
   "design": {
+    "_note": "PENDENTE — paleta e tipografia oficiais do Hotel Lagamar serão enviadas pelo cliente. Valores abaixo ainda são os do template base; NÃO tratar como definitivos. Direção provável (briefing): madeira de lei + represa, sóbrio, sem estética de luxo.",
     "primary": "#5b7a3d",
     "primary_dark": "#1a4922",
     "accent": "#0a6427",
@@ -343,20 +186,20 @@
   "blog": {
     "enabled": true,
     "topics_focus": [
-      "Serra Geral turismo",
-      "vida rural e natureza",
-      "atividades com crianças na serra",
-      "passeios a cavalo e contato com animais",
-      "cachoeiras e trilhas na Serra Geral",
-      "inverno na Serra Geral",
-      "gastronomia serrana",
-      "turismo pet friendly na serra"
+      "turismo no Sul de Minas",
+      "natureza e represa em Varginha",
+      "São Thomé das Letras e Capitólio",
+      "destinos para desacelerar / bem-estar",
+      "casamentos e celebrações na natureza",
+      "viagens de casal e família em Minas Gerais",
+      "pôr do sol e contemplação",
+      "atividades ao ar livre (caminhadas, arborismo)"
     ],
     "seo_region_keywords": [
-      "Campos do Pinhão", "Serra Geral", "Vale dos Pinhões",
-      "Morro dos Pinhais", "Serra do Vale Azul", "pousada rural RS"
+      "Varginha", "Sul de Minas", "Minas Gerais", "represa",
+      "São Thomé das Letras", "Capitólio", "hotel na natureza"
     ],
     "internal_link_targets": ["acomodacoes", "experiencia", "contato", "galeria"],
-    "cta_default": "Reserve sua estadia na Pousada Vale das Araucárias"
+    "cta_default": "Reserve sua estadia no Hotel Lagamar"
   }
 }

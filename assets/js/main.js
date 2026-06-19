@@ -1,14 +1,14 @@
 /* ============================================================
-   POUSADA VALE DAS ARAUCÁRIAS — main.js v3
-   TEMPLATE-MODELO — substitua as constantes abaixo por cliente
+   HOTEL LAGAMAR (Varginha/MG) — main.js v3
+   Constantes abaixo: preencher REPLACE-ME com os dados reais do cliente
    ============================================================ */
 
 const WEBHOOK_URL = 'https://webhook.example.com/webhook/REPLACE-ME';
-const HOTEL_NAME  = 'Pousada Vale das Araucárias';
-const WA_NUMBER   = '5551999998888';
-const WA_MESSAGE  = 'Olá! Gostaria de mais informações sobre a Pousada Vale das Araucárias.';
-const BOOKING_URL = 'https://pousadavaledasaraucarias.com.br/';
-const MOTOR_BASE  = 'https://pousadavaledasaraucarias.com.br'; // substitua pela URL do motor de reservas (ex: Foco Multimídia) quando disponível
+const HOTEL_NAME  = 'Hotel Lagamar';
+const WA_NUMBER   = 'REPLACE-ME'; // 55 + DDD + número, sem pontuação
+const WA_MESSAGE  = 'Olá! Gostaria de mais informações sobre o Hotel Lagamar.';
+const BOOKING_URL = 'REPLACE-ME'; // domínio do site quando definido
+const MOTOR_BASE  = 'REPLACE-ME'; // base do motor de reservas quando disponível
 
 // ── dataLayer GTM ──
 window.dataLayer = window.dataLayer || [];

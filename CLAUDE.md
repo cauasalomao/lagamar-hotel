@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project overview
 
-**Template-modelo** para sites de pousada, derivado da base Komplexa Hotéis. Site estático preenchido com uma identidade fictícia (**Pousada Vale das Araucárias**, Campos do Pinhão/RS) que funciona como ponto de partida ao duplicar o projeto para um novo cliente. HTML5, CSS3 e JavaScript vanilla — sem build, sem framework, sem `package.json`, sem testes. Português do Brasil em todo o conteúdo.
+Site do **Hotel Lagamar** (Varginha/MG), construído a partir de um template-modelo de site de pousada (base Komplexa Hotéis). Site estático em HTML5, CSS3 e JavaScript vanilla — sem build, sem framework, sem `package.json`, sem testes. Português do Brasil em todo o conteúdo.
 
-Quando o usuário pedir "adaptar este site para o cliente X", a operação é primariamente busca/substituição — a lista completa de termos a trocar está em `README.md`. Este CLAUDE.md foca na arquitetura e nas pegadinhas que não dá pra descobrir só lendo o código.
+**Estado atual (fundação):** o `hotel-config.json` já foi populado com os dados do briefing do Lagamar; o HTML das páginas ainda carrega o conteúdo herdado do template-modelo (Pousada Vale das Araucárias) e será reescrito num passo seguinte, junto com o cliente. A **paleta e a tipografia oficiais estão pendentes** (o cliente vai enviar) — até lá os tokens de design em `assets/css/style.css` e em `hotel-config.json` continuam os do template base; **não os trate como definitivos**. O briefing real está em `Briefing - Hotel Lagamar.md` na raiz; o `README.md` mantém o passo a passo genérico de replicação do template.
 
 ## Desenvolvimento
 
@@ -37,7 +37,7 @@ Cada página é um diretório com `index.html` para URLs limpas:
 /blog/{slug}/                Posts individuais
 ```
 
-Raiz também guarda: `hotel-config.json`, `blog-plan.json`, `sitemap.xml`, `robots.txt`, dois briefings `.md` de referência, `README.md` com o passo a passo de replicação, `favicon.svg`.
+Raiz também guarda: `hotel-config.json`, `blog-plan.json`, `sitemap.xml`, `robots.txt`, `Briefing - Hotel Lagamar.md` (briefing estratégico do cliente), `README.md` com o passo a passo de replicação, `favicon.svg`.
 
 ## Arquitetura essencial
 
@@ -65,7 +65,7 @@ const BOOKING_URL   // domínio do site
 const MOTOR_BASE    // base do motor de reservas
 ```
 
-Formato da URL do motor: `{MOTOR_BASE}/search/{ci}/{co}/{adults}-{age1}-{age2}` (ex.: 2 adultos + crianças de 5 e 8 anos → `.../search/2026-05-10/2026-05-12/2-5-8`). Atualmente aponta para o domínio-modelo — trocar `MOTOR_BASE` pela URL do motor real (Foco Multimídia ou equivalente) ao ativar reservas para um cliente.
+Formato da URL do motor: `{MOTOR_BASE}/search/{ci}/{co}/{adults}-{age1}-{age2}` (ex.: 2 adultos + crianças de 5 e 8 anos → `.../search/2026-05-10/2026-05-12/2-5-8`). `MOTOR_BASE` está como `REPLACE-ME` — trocar pela URL do motor de reservas real do Lagamar ao ativar reservas.
 
 ## Dois modais globais injetados via JS
 
@@ -120,7 +120,7 @@ As tags `<img>` preservam `alt` descritivo — esses alts funcionam como documen
 
 ## Google Maps embed
 
-Os iframes em `/contato/` e `/localizacao/` consultam **pelo nome do negócio**, não pelo endereço: `maps.google.com/maps?q=Pousada+Vale+das+Arauc%C3%A1rias,+Campos+do+Pinh%C3%A3o+-+RS&output=embed`. Consultar por endereço faz o Google interpretar segmentos e renderizar uma rota de direção em vez de um pin. Para a nova cliente, troque o parâmetro `q=` preservando o padrão (nome + cidade + UF, sem rua).
+Os iframes em `/contato/` e `/localizacao/` consultam **pelo nome do negócio**, não pelo endereço. Padrão a usar para o Lagamar: `maps.google.com/maps?q=Hotel+Lagamar,+Varginha+-+MG&output=embed`. Consultar por endereço faz o Google interpretar segmentos e renderizar uma rota de direção em vez de um pin. Preserve sempre o padrão (nome + cidade + UF, sem rua). **Confirmar** que esse `q=` cai no pin correto quando o endereço real do hotel estiver disponível.
 
 ## SEO e structured data
 
@@ -128,7 +128,7 @@ Cada página inclui JSON-LD Schema.org (LodgingBusiness na home, WebPage + Bread
 
 ## Arquivos de configuração
 
-- **`hotel-config.json`** — fonte de verdade ficcional: contato (telefone/e-mail/WA), endereço + coordenadas, 4 acomodações, atividades, pacotes, política pet, atrações próximas, restaurantes locais, integrações (`webhook_url`, `booking_engine_url`), design tokens, configurações de blog. Mantenha em sincronia com as constantes do `main.js` quando valores mudarem. **Comece por este arquivo ao adaptar o site para um novo cliente.**
+- **`hotel-config.json`** — fonte de verdade do Hotel Lagamar: identidade/tom, `brand_restrictions` (palavras e posicionamentos proibidos pelo briefing), contato, endereço + coordenadas, acomodações, experiências, diferenciais, `events` (vertical de eventos), credibilidade, atrações próximas, integrações (`webhook_url`, `booking_engine_url`), design tokens (pendentes) e configurações de blog. Campos sem dado real estão como `REPLACE-ME`/`TODO`. Mantenha em sincronia com as constantes do `main.js` quando valores mudarem. **Comece por este arquivo ao escrever/ajustar conteúdo.**
 - **`blog-plan.json`** — estratégia editorial, regras de SEO, spec do template de post, lista `published` e fila `upcoming`. Pilares de conteúdo: Destino, Experiência, Família, Dicas práticas.
 
 ## Fluxo de criação de post no blog
@@ -140,26 +140,32 @@ Cada página inclui JSON-LD Schema.org (LodgingBusiness na home, WebPage + Bread
 5. Adicionar card em `blog/index.html` dentro de `#blogGrid`.
 6. Adicionar `<url>` em `sitemap.xml`.
 7. Mover item de `upcoming` para `published` em `blog-plan.json`.
-8. Commitar e fazer push.
+8. Commitar localmente (push só quando o usuário fornecer link do repo + ordem explícita — ver "Preferência do usuário").
 
 ### Checklist de SEO por post
 
-`<title>` único com keyword (formato `{Título} | Blog Pousada Vale das Araucárias`), meta description ≤155 caracteres, URL canônica, Open Graph, `article:published_time`, JSON-LD `BlogPosting` + `BreadcrumbList`, `<h1>` único, `<h2>` por seção, ≥2 links internos, `.blog-cta-box` no fim.
+`<title>` único com keyword (formato `{Título} | Blog Hotel Lagamar`), meta description ≤155 caracteres, URL canônica, Open Graph, `article:published_time`, JSON-LD `BlogPosting` + `BreadcrumbList`, `<h1>` único, `<h2>` por seção, ≥2 links internos, `.blog-cta-box` no fim.
 
 ## Contexto do hotel (decisões de conteúdo vêm daqui)
 
-- **Localização:** Campos do Pinhão, Serra Geral, RS — rodovia RS 453.
-- **História:** propriedade familiar desde 2005, aberta como pousada em 2019.
-- **4 unidades:** Chalé Mirante (casais, luxo), Chalé Araucária (famílias, vista lago), Chalé Rancho (famílias, animais), Casarão Pinhão (grupos até 12).
-- **Diferencial:** cavalgadas e pôneis inclusos na diária.
-- **Público:** famílias 35–45 com crianças, incluindo famílias com crianças autistas buscando contato com animais.
-- **Origem dos hóspedes:** Rio Grande do Sul (Porto Alegre, Caxias, Gramado) + Santa Catarina + Paraná.
-- **Self-catering:** sem refeições inclusas (cozinha completa em cada unidade); café da manhã planejado.
-- **Expansão:** piscina aquecida, infantil, ofurô em obras.
-- **Tom:** acolhedor, familiar, autêntico — como receber amigos em casa. Nunca formal.
+Fonte: briefing estratégico do Hotel Lagamar (`Briefing - Hotel Lagamar.md`) e `hotel-config.json`. Use este bloco para manter coerência ao escrever qualquer seção ou post.
+
+- **Negócio:** Hotel Lagamar, 24 suítes (expansão planejada para 50), em Varginha/MG.
+- **Localização:** região tranquila de Minas Gerais, à beira da represa. ~70km de São Thomé das Letras, ~200km de Capitólio.
+- **História:** adquirido em 2009 pelo atual proprietário, encantado pela raridade da vista; desenvolvido desde então para experiências memoráveis na natureza.
+- **Identidade física:** arquitetura em madeira de lei, integração com a natureza, vista privilegiada para a represa, pôr do sol como experiência marcante.
+- **Experiências:** piscina externa, piscina aquecida, sauna, arborismo, caminhadas, corridas ao ar livre, acesso à represa, café da manhã, curadoria de restaurantes da região.
+- **Eventos (vertical relevante):** casamentos, bodas, chá revelação, confraternizações e eventos corporativos, celebrações familiares.
+- **Público:** casais (inclusive casais jovens), famílias e pessoas idosas que valorizam a natureza e buscam desacelerar.
+- **Origem dos hóspedes:** Minas Gerais, São Paulo, Rio de Janeiro e cidades da região.
+- **Credibilidade:** placa de homenagem do Governador, depoimentos reais, histórico consolidado.
+- **Conversão:** WhatsApp é o canal principal; também e-mail e atendimento humanizado.
+- **Tom:** acolhedor, natural, humanizado. Pilares: natureza, acolhimento, família, conexão, contemplação, bem-estar, celebrações.
 - **Idioma:** português brasileiro em todo o site.
 
-Ao adaptar para um cliente real, **este bloco inteiro é a primeira coisa a reescrever neste CLAUDE.md** — as decisões de conteúdo (tom, público, diferenciais, atrações próximas) são o que a LLM usa para manter coerência ao escrever novas seções ou posts.
+⚠️ **Restrições de marca (briefing — obrigatórias):** NÃO comunicar luxo, ostentação ou exclusividade financeira. Evitar as palavras *luxo, luxuoso, premium, sofisticação ostensiva, hotelaria de luxo, alto padrão sofisticado, status social*. Nada de comparações com resorts de alto luxo. Público **não desejado**: focados em ostentação, quem não gosta de animais, quem só valoriza alto padrão sofisticado. (Detalhes em `hotel-config.json → brand_restrictions`.)
+
+**Lacunas a preencher com o cliente** (marcadas `REPLACE-ME`/`TODO` em `hotel-config.json`): contato (telefone, e-mail, WhatsApp, Instagram), endereço/CEP/coordenadas, domínio, motor de reservas e webhook, demais categorias de suíte (só a "Apartamento 2 Quartos – Vista Lago" foi detalhada), nomes dos restaurantes da curadoria, e a **paleta/tipografia oficiais**.
 
 ## Convenções
 
@@ -170,6 +176,13 @@ Ao adaptar para um cliente real, **este bloco inteiro é a primeira coisa a rees
 - O path do logo no markup injetado por JS usa `/assets/img/logo-placeholder.svg` absoluto para resolver corretamente a partir de qualquer profundidade.
 - Não edite a CSS legada `.wa-modal` — é herança do template base sem uso; o modal de WhatsApp vivo usa classes `.wl-*`.
 
-## Preferência do usuário
+## Preferência do usuário — política de Git
 
-O usuário mantém a branch `main` sincronizada com o repositório remoto e **faz commit + push após cada alteração de código, sem precisar pedir**. Ao adaptar este template para um cliente real, o fluxo segue o mesmo padrão.
+Commits locais automáticos na branch `main` são ok e esperados após cada alteração de código, sem precisar pedir.
+
+**Push para o GitHub, porém, NÃO é automático.** Um push anterior deste template sobrescreveu o repositório de um cliente real em produção. Para evitar reincidência:
+
+- **Nunca** rodar `git push`, `gh pr create`, `gh repo create`, ou qualquer comando que envie conteúdo deste diretório para o GitHub por iniciativa própria.
+- Publicar só quando o usuário **explicitamente** fornecer, na mesma instrução, **(a)** a URL do repositório remoto correto **e (b)** a ordem clara de dar push/publicar. Ambos os itens precisam estar presentes — um sem o outro não basta.
+- Antes de executar o push autorizado, rodar `git remote -v` e confirmar que o remote aponta para a URL fornecida (adicionar/ajustar `origin` se necessário).
+- Isso também vale ao adaptar o template para um novo cliente: commits locais sim, push só com link + ordem explícitos.
