@@ -3,12 +3,12 @@
    Constantes abaixo: preencher REPLACE-ME com os dados reais do cliente
    ============================================================ */
 
-const WEBHOOK_URL = 'https://webhook.example.com/webhook/REPLACE-ME';
+const WEBHOOK_URL = 'https://webhook.example.com/webhook/REPLACE-ME'; // sem webhook ainda; chamadas falham em silêncio (try/catch)
 const HOTEL_NAME  = 'Hotel Lagamar';
-const WA_NUMBER   = 'REPLACE-ME'; // 55 + DDD + número, sem pontuação
+const WA_NUMBER   = '5535997426463';
 const WA_MESSAGE  = 'Olá! Gostaria de mais informações sobre o Hotel Lagamar.';
 const BOOKING_URL = 'REPLACE-ME'; // domínio do site quando definido
-const MOTOR_BASE  = 'REPLACE-ME'; // base do motor de reservas quando disponível
+const MOTOR_BASE  = 'REPLACE-ME'; // sem motor de reservas: o modal de reserva leva ao WhatsApp (ver submitBooking)
 
 // ── dataLayer GTM ──
 window.dataLayer = window.dataLayer || [];
@@ -111,18 +111,27 @@ document.addEventListener('keydown', e => {
   if(e.key==='Escape') closeLB(); if(e.key==='ArrowLeft') navLB(-1); if(e.key==='ArrowRight') navLB(1);
 });
 
-// ── FORMULÁRIO CONTATO ──
+// ── FORMULÁRIO CONTATO → WhatsApp ──
+// Sem webhook/motor por enquanto: monta a mensagem com os dados e abre o WhatsApp.
 async function submitContact(e) {
   e.preventDefault();
   const form = e.target;
-  const data = Object.fromEntries(new FormData(form));
+  const d = Object.fromEntries(new FormData(form));
 
-  // GTM
   pushLead('formulario_contato');
+  sendToWebhook({ tipo: 'contato', ...d }); // opcional/pendente — falha em silêncio
 
-  await sendToWebhook({ tipo: 'contato', ...data });
+  let msg = `Olá! Vim pelo site do ${HOTEL_NAME} e gostaria de mais informações.\n\n`;
+  if (d.nome)     msg += `*Nome:* ${d.nome}\n`;
+  if (d.telefone) msg += `*Telefone:* ${d.telefone}\n`;
+  if (d.email)    msg += `*E-mail:* ${d.email}\n`;
+  if (d.checkin)  msg += `*Check-in:* ${d.checkin}\n`;
+  if (d.checkout) msg += `*Check-out:* ${d.checkout}\n`;
+  if (d.mensagem) msg += `*Mensagem:* ${d.mensagem}\n`;
+
   form.reset();
   document.getElementById('contactOk')?.classList.add('show');
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
 }
 
 // ── TÍTULO DA ABA ao sair da página ──
@@ -195,12 +204,16 @@ document.addEventListener('visibilitychange', () => {
   form.addEventListener('submit', async e => {
     e.preventDefault();
     if (!form.checkValidity()) { form.reportValidity(); return; }
-    const data = Object.fromEntries(new FormData(form));
+    const d = Object.fromEntries(new FormData(form));
     pushLead('whatsapp_modal');
-    await sendToWebhook({ tipo: 'whatsapp_modal', ...data });
+    sendToWebhook({ tipo: 'whatsapp_modal', ...d }); // opcional/pendente
+    let msg = `Olá! Vim pelo site do ${HOTEL_NAME}.\n\n`;
+    if (d.nome)     msg += `*Nome:* ${d.nome}\n`;
+    if (d.telefone) msg += `*Telefone:* ${d.telefone}\n`;
+    if (d.email)    msg += `*E-mail:* ${d.email}\n`;
     form.reset();
     close();
-    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_MESSAGE)}`, '_blank', 'noopener');
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
   });
 
   // O botão "Reservar Agora Online" abre o modal de reservas do motor
@@ -212,14 +225,8 @@ document.addEventListener('visibilitychange', () => {
   });
 })();
 
-// ── MODAL DE RESERVA (Foco Multimídia) ──
-function buildBookingURL(checkin, checkout, adults, childAges) {
-  if (!checkin || !checkout) return null;
-  let guestStr = String(adults || 2);
-  if (childAges && childAges.length) guestStr += '-' + childAges.join('-');
-  return `${MOTOR_BASE}/search/${checkin}/${checkout}/${guestStr}`;
-}
-
+// ── MODAL DE RESERVA → WhatsApp ──
+// Sem motor de reservas ainda: o modal coleta datas/hóspedes e envia tudo pronto pro WhatsApp.
 function openBooking() {
   document.getElementById('bkModal')?.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -256,8 +263,13 @@ function submitBooking(e) {
     const age = document.getElementById(`bk-child-${i}`)?.value;
     if (age !== undefined) childAges.push(age);
   }
-  const url = buildBookingURL(ci, co, adults, childAges);
-  if (url) window.open(url, '_blank', 'noopener');
+  pushLead('reserva_whatsapp');
+  let msg = `Olá! Gostaria de fazer uma reserva no ${HOTEL_NAME}.\n\n`;
+  if (ci) msg += `*Check-in:* ${ci}\n`;
+  if (co) msg += `*Check-out:* ${co}\n`;
+  msg += `*Adultos:* ${adults}\n`;
+  if (nChildren) msg += `*Crianças:* ${nChildren} (idades: ${childAges.join(', ')})\n`;
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
   closeBooking();
 }
 
@@ -272,7 +284,7 @@ function submitBooking(e) {
           <img src="/assets/img/logo-placeholder.svg" alt="${HOTEL_NAME}" width="48" height="48">
           <div>
             <h3 id="bkTitle">Reserve sua Estadia</h3>
-            <p>Preencha os dados e consulte disponibilidade</p>
+            <p>Preencha os dados e finalize pelo WhatsApp</p>
           </div>
         </div>
         <form onsubmit="submitBooking(event)" class="bk-form">
@@ -308,7 +320,7 @@ function submitBooking(e) {
             </div>
           </div>
           <div class="bk-child-ages" id="bkChildAges"></div>
-          <button type="submit" class="bk-submit">Verificar Disponibilidade</button>
+          <button type="submit" class="bk-submit">Pedir reserva pelo WhatsApp</button>
           <p class="bk-alt">Prefere falar com a gente?
             <a href="https://wa.me/${WA_NUMBER}?text=${waText}" target="_blank" rel="noopener" class="bk-wa-link">Fale pelo WhatsApp</a>
           </p>

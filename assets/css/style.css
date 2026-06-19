@@ -1,6 +1,6 @@
 /* ============================================================
-   POUSADA VALE DAS ARAUCÁRIAS — style.css
-   Template Modelo — site-base para pousadas
+   HOTEL LAGAMAR (Varginha/MG) — style.css
+   Paleta oficial "quiet luxury": areia dourada + pérola + taupe + sálvia + azul profundo
    ============================================================ */
 
 /* ── RESET ── */
@@ -17,24 +17,26 @@ button { cursor: pointer; }
 
 /* ── TOKENS ── */
 :root {
-  --accent:       #5b7a3d;
-  --accent-hover: #1a4922;
-  --accent-rgb:   91, 122, 61;
-  --accent-soft:  rgba(91,122,61,.08);
-  --cta:          #f6b230;
-  --cta-hover:    #96804b;
-  --cta-rgb:      246,178,48;
-  --bg:           #ffffff;
-  --bg-rgb:       255,255,255;
-  --surface:      #f9f9f9;
-  --surface-light:#f0f0ec;
-  --text:         #000000;
-  --text-muted:   #4a4a4a;
-  --border:       rgba(91,122,61,.13);
-  --shadow:       0 4px 24px rgba(0,0,0,.07);
-  --shadow-lg:    0 12px 48px rgba(0,0,0,.13);
-  --hero-overlay: linear-gradient(to bottom,rgba(20,24,14,.6) 0%,rgba(20,24,14,.65) 40%,rgba(20,24,14,.85) 100%);
-  --font-display: 'Pinyon Script', cursive;
+  --accent:       #bea178;   /* areia dourada — cor dominante da marca */
+  --accent-hover: #a98a5c;   /* areia escurecida p/ hover */
+  --accent-rgb:   190,161,120;
+  --accent-soft:  rgba(190,161,120,.14);
+  --cta:          #365c73;   /* azul profundo — botões de reserva / CTAs */
+  --cta-hover:    #284656;   /* hover do botão */
+  --cta-rgb:      54,92,115;
+  --sage:         #8c9681;   /* verde sálvia — elementos naturais / destaques sutis */
+  --bg:           #f7f4ef;   /* branco pérola — background principal */
+  --bg-rgb:       247,244,239;
+  --surface:      #f1ece3;
+  --surface-light:#ece4d7;
+  --text:         #5d5145;   /* texto corrido */
+  --text-muted:   #6f6253;
+  --heading:      #7a6652;   /* marrom taupe — títulos */
+  --border:       rgba(122,102,82,.16);
+  --shadow:       0 4px 24px rgba(90,72,52,.08);
+  --shadow-lg:    0 12px 48px rgba(90,72,52,.14);
+  --hero-overlay: linear-gradient(to bottom,rgba(45,36,28,.55) 0%,rgba(45,36,28,.6) 40%,rgba(45,36,28,.85) 100%);
+  --font-display: 'Cormorant Garamond', serif;
   --font-body:    'Raleway', sans-serif;
   --space-xs: clamp(.5rem,1vw,.75rem);
   --space-sm: clamp(1rem,2vw,1.5rem);
@@ -46,11 +48,11 @@ button { cursor: pointer; }
 }
 
 /* ── TIPOGRAFIA ── */
-h1 { font-family:var(--font-display); font-size:clamp(3rem,8vw,7rem); font-weight:400; line-height:1.05; }
-h2 { font-family:var(--font-display); font-size:clamp(2.2rem,5vw,4rem); font-weight:400; line-height:1.15; }
-h3 { font-family:var(--font-display); font-size:clamp(1.4rem,2.5vw,2rem); font-weight:400; }
-h4 { font-family:var(--font-body); font-size:.85rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
-.overline { font-family:var(--font-body); font-size:.7rem; letter-spacing:.22em; text-transform:uppercase; color:var(--cta); font-weight:700; }
+h1 { font-family:var(--font-display); font-size:clamp(3rem,8vw,7rem); font-weight:500; line-height:1.05; color:var(--heading); }
+h2 { font-family:var(--font-display); font-size:clamp(2.2rem,5vw,4rem); font-weight:500; line-height:1.15; color:var(--heading); }
+h3 { font-family:var(--font-display); font-size:clamp(1.4rem,2.5vw,2rem); font-weight:500; color:var(--heading); }
+h4 { font-family:var(--font-body); font-size:.85rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--heading); }
+.overline { font-family:var(--font-body); font-size:.7rem; letter-spacing:.22em; text-transform:uppercase; color:var(--accent-hover); font-weight:700; }
 p { font-size:clamp(.92rem,1.1vw,1.04rem); line-height:1.85; color:var(--text-muted); max-width:65ch; }
 
 /* ── LAYOUT ── */
@@ -69,8 +71,8 @@ img { opacity:0; transition:opacity .6s ease; }
 img.loaded { opacity:1; }
 
 /* ── PLACEHOLDER QUANDO SEM FOTO ── */
-.hero-bg img { background:linear-gradient(160deg,#000000 0%,#5b7a3d 100%); }
-.pg-hero > img { background:linear-gradient(160deg,#000000 0%,#5b7a3d 60%); }
+.hero-bg img { background:linear-gradient(160deg,#2d241c 0%,#7a6652 100%); }
+.pg-hero > img { background:linear-gradient(160deg,#2d241c 0%,#7a6652 60%); }
 .ab-img img,.sobre-img-big img,.sobre-img-sm img,.rc-img img,.rp-c img,.gi img,.dp-img img { background:var(--surface-light); }
 
 /* ── BOTÕES ── */
@@ -160,7 +162,7 @@ img.loaded { opacity:1; }
 .cta-hero-ov { position:absolute; inset:0; background:rgba(0,0,0,.75); }
 
 /* ── EXPERIÊNCIAS PREVIEW ── */
-.exp-section { background:#1a4922; }
+.exp-section { background:#5d5145; }
 .exp-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; margin-top:clamp(2rem,4vw,3rem); }
 .exp-card { display:flex; flex-direction:column; }
 .exp-card-img { overflow:hidden; border-radius:10px; aspect-ratio:3/4; }

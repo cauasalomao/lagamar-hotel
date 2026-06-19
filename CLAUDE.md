@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Site do **Hotel Lagamar** (Varginha/MG), construído a partir de um template-modelo de site de pousada (base Komplexa Hotéis). Site estático em HTML5, CSS3 e JavaScript vanilla — sem build, sem framework, sem `package.json`, sem testes. Português do Brasil em todo o conteúdo.
 
-**Estado atual (fundação):** o `hotel-config.json` já foi populado com os dados do briefing do Lagamar; o HTML das páginas ainda carrega o conteúdo herdado do template-modelo (Pousada Vale das Araucárias) e será reescrito num passo seguinte, junto com o cliente. A **paleta e a tipografia oficiais estão pendentes** (o cliente vai enviar) — até lá os tokens de design em `assets/css/style.css` e em `hotel-config.json` continuam os do template base; **não os trate como definitivos**. O briefing real está em `Briefing - Hotel Lagamar.md` na raiz; o `README.md` mantém o passo a passo genérico de replicação do template.
+**Estado atual:** `hotel-config.json` populado com os dados reais do Lagamar; **paleta e tipografia oficiais já aplicadas** em `assets/css/style.css` (quiet luxury: areia/pérola/taupe/sálvia/azul + Cormorant Garamond/Raleway); **todos os formulários levam ao WhatsApp** com mensagem pronta (sem motor de reservas/webhook por enquanto). O que **ainda falta**: reescrever o **conteúdo textual e as imagens** das páginas, que continuam herdados do template-modelo (Pousada Vale das Araucárias) — esse é o próximo passo, feito junto com o cliente. O briefing real está em `Briefing - Hotel Lagamar.md`; o `README.md` mantém o passo a passo genérico de replicação do template.
 
 ## Desenvolvimento
 
@@ -43,29 +43,30 @@ Raiz também guarda: `hotel-config.json`, `blog-plan.json`, `sitemap.xml`, `robo
 
 ### CSS único — `assets/css/style.css`
 
-Todo o estilo em um só arquivo, guiado por custom properties (`--accent: #5b7a3d` verde floresta, `--cta: #f6b230` dourado, `--font-display: 'Pinyon Script'`, `--font-body: 'Raleway'`). Responsivo em 768/640/480px. Espaçamentos via `clamp()`. Classes curtas quase-BEM: `.rc` room card, `.gi` gallery item, `.exp-card`, `.rp-c`, `.aud-card`, `.fg`, `.btn-gold`/`.btn-green`/`.btn-outline`/`.btn-outline-w`.
+Todo o estilo em um só arquivo, guiado por custom properties. Paleta oficial do Lagamar ("quiet luxury"): `--accent: #bea178` (areia dourada, cor dominante), `--cta: #365c73` (azul profundo, botões/conversão) com `--cta-hover: #284656`, `--bg: #f7f4ef` (branco pérola), `--heading: #7a6652` (taupe, títulos), `--text: #5d5145` (corpo), `--sage: #8c9681` (verde sálvia, elementos naturais). Tipografia `--font-display: 'Cormorant Garamond'` (serif refinada) e `--font-body: 'Raleway'`. Responsivo em 768/640/480px. Espaçamentos via `clamp()`. Classes curtas quase-BEM: `.rc` room card, `.gi` gallery item, `.exp-card`, `.rp-c`, `.aud-card`, `.fg`, `.btn-gold`/`.btn-green`/`.btn-outline`/`.btn-outline-w`.
 
 ### JS único — `assets/js/main.js`
 
 Toda a interatividade vive aqui. Primitivas principais:
 
-- `sendToWebhook(payload)` — POST JSON para `WEBHOOK_URL` com `{hotel, origem_pagina, url, timestamp, ...payload}`. Usado por todos os forms.
+- **Forms levam ao WhatsApp.** Como ainda não há motor de reservas nem webhook, **todos** os formulários (contato, captura WhatsApp, modal de reserva) montam uma mensagem pronta com os dados preenchidos e fazem `window.open('wa.me/{WA_NUMBER}?text=...')`. Quando houver motor/webhook, reativar nas funções correspondentes.
+- `sendToWebhook(payload)` — POST JSON para `WEBHOOK_URL`. Ainda chamado por todos os forms, mas o `WEBHOOK_URL` é placeholder (`REPLACE-ME`): a chamada falha em silêncio (try/catch) e o WhatsApp é o caminho real. Preencher `WEBHOOK_URL` reativa o envio.
 - `pushLead(tipo)` — empurra um evento `gerar_lead` no dataLayer do GTM, com `lead_tipo`.
-- `submitContact` — trata o form de `/contato/`.
+- `submitContact` — trata o form de `/contato/`: monta mensagem (nome/tel/email/datas/mensagem) e abre o WhatsApp.
 - Menu mobile (`openMob`/`closeMob`), header sticky (hero-mode ↔ solid no scroll), lightbox (`openLB`/`closeLB`/`navLB`, lê de `LB_SRCS`), banner de cookies, lazy-load observer, swap do título da aba quando a aba fica oculta.
 
 ### Constantes no topo de `main.js` (editar aqui, não em valores espalhados)
 
 ```js
-const WEBHOOK_URL   // URL do webhook n8n/Zapier — todos os forms postam aqui
-const HOTEL_NAME    // usado em todos os payloads de webhook
-const WA_NUMBER     // formato '55 + DDD + número' sem pontuação
-const WA_MESSAGE    // texto pré-preenchido em wa.me?text=
-const BOOKING_URL   // domínio do site
-const MOTOR_BASE    // base do motor de reservas
+const WEBHOOK_URL   // placeholder (REPLACE-ME) — sem webhook ainda; forms vão pro WhatsApp
+const HOTEL_NAME    // 'Hotel Lagamar' — usado nas mensagens e payloads
+const WA_NUMBER     // '5535997426463' (55 + DDD + número, sem pontuação)
+const WA_MESSAGE    // texto genérico pré-preenchido em wa.me?text= (botões diretos)
+const BOOKING_URL   // REPLACE-ME — domínio do site quando definido
+const MOTOR_BASE    // REPLACE-ME — sem motor; modal de reserva vai pro WhatsApp
 ```
 
-Formato da URL do motor: `{MOTOR_BASE}/search/{ci}/{co}/{adults}-{age1}-{age2}` (ex.: 2 adultos + crianças de 5 e 8 anos → `.../search/2026-05-10/2026-05-12/2-5-8`). `MOTOR_BASE` está como `REPLACE-ME` — trocar pela URL do motor de reservas real do Lagamar ao ativar reservas.
+Não há motor de reservas: o modal `.bk-*` coleta datas/hóspedes e envia tudo pronto pro WhatsApp (ver `submitBooking`). Quando o Lagamar tiver motor, reintroduzir a montagem de URL `{MOTOR_BASE}/search/{ci}/{co}/{adults}-{age1}-{age2}` em `submitBooking`.
 
 ## Dois modais globais injetados via JS
 
@@ -73,13 +74,13 @@ Ambos são inseridos no `<body>` em tempo de execução por IIFEs dentro de `mai
 
 ### Modal de captura WhatsApp (classes `.wl-*`)
 
-Intercepta **todo** clique em `a[href*="wa.me/"]` do site (botão flutuante, CTAs do hero, redes sociais no footer etc.). Mostra um card de 340px ancorado bottom-right (desktop) / bottom-center (mobile). Campos obrigatórios: nome/email/telefone. No submit: `pushLead('whatsapp_modal')` → webhook → `form.reset()` → fecha → `window.open('wa.me/{WA_NUMBER}?text=...')`. O botão secundário "📅 Reservar Agora Online" fecha este modal e chama `openBooking()` — não repurpose esse botão para outro destino. Fecha com × / backdrop / Esc.
+Intercepta **todo** clique em `a[href*="wa.me/"]` do site (botão flutuante, CTAs do hero, redes sociais no footer etc.). Mostra um card de 340px ancorado bottom-right (desktop) / bottom-center (mobile). Campos obrigatórios: nome/email/telefone. No submit: `pushLead('whatsapp_modal')` → `sendToWebhook` (silencioso) → monta mensagem com os dados → `form.reset()` → fecha → `window.open('wa.me/{WA_NUMBER}?text=...')` com a mensagem preenchida. O botão secundário "📅 Reservar Agora Online" fecha este modal e chama `openBooking()` — não repurpose esse botão para outro destino. Fecha com × / backdrop / Esc.
 
-### Modal de reservas (classes `.bk-*`) — motor Foco Multimídia
+### Modal de reservas (classes `.bk-*`) — leva ao WhatsApp
 
 Disparado somente por `onclick="openBooking();return false"` explícito nos CTAs "Reservar". **Não intercepta links globalmente** — o trigger é opt-in por botão. Todos os "Reservar"/"Reservar Agora"/"Reservar Estadia"/"Fazer Reserva" seguem esse padrão, incluindo a versão do mobnav que encadeia `closeMob();openBooking();return false`. Na home, o CTA de WhatsApp do hero foi substituído por "Reservar Agora" apontando para este modal.
 
-Form: check-in / check-out / adultos (1–5) / crianças (0–3). Mudar o select de crianças renderiza N selects de idade (0–12). Submit monta a URL e faz `window.open(url, '_blank', 'noopener')`, depois fecha. O footer do modal tem um fallback por WhatsApp. Fecha com × / backdrop / Esc.
+Form: check-in / check-out / adultos (1–5) / crianças (0–3). Mudar o select de crianças renderiza N selects de idade (0–12). Submit (`submitBooking`) monta uma mensagem de reserva com datas/hóspedes e faz `window.open('wa.me/{WA_NUMBER}?text=...')`, depois fecha. O footer do modal tem um link direto de WhatsApp. Fecha com × / backdrop / Esc.
 
 Ao adicionar um novo CTA "Reservar" em qualquer lugar, use:
 
@@ -150,10 +151,13 @@ Cada página inclui JSON-LD Schema.org (LodgingBusiness na home, WebPage + Bread
 
 Fonte: briefing estratégico do Hotel Lagamar (`Briefing - Hotel Lagamar.md`) e `hotel-config.json`. Use este bloco para manter coerência ao escrever qualquer seção ou post.
 
-- **Negócio:** Hotel Lagamar, 24 suítes (expansão planejada para 50), em Varginha/MG.
+- **Negócio:** Hotel Lagamar, 24 suítes (expansão planejada para 50), em Varginha/MG. Endereço: Condomínio Lagamar, Varginha - MG.
+- **Acomodação:** as 24 suítes são **todas iguais** — categoria única "Apartamento 2 Quartos – Vista Lago" (70m²; suíte king + quarto casal/solteiro; 2 banheiros; varanda com vista lago/jardim/rio). A página /acomodacoes/ comunica padrão único, não um grid de tipos.
+- **Contato:** WhatsApp/telefone (35) 99742-6463 (`5535997426463`), e-mail lagamaroficial@gmail.com, Instagram @lagamarhotel.
 - **Localização:** região tranquila de Minas Gerais, à beira da represa. ~70km de São Thomé das Letras, ~200km de Capitólio.
 - **História:** adquirido em 2009 pelo atual proprietário, encantado pela raridade da vista; desenvolvido desde então para experiências memoráveis na natureza.
 - **Identidade física:** arquitetura em madeira de lei, integração com a natureza, vista privilegiada para a represa, pôr do sol como experiência marcante.
+- **Restaurantes:** a curadoria é feita **direto na recepção** com os hóspedes — **não listar** restaurantes nomeados no site.
 - **Experiências:** piscina externa, piscina aquecida, sauna, arborismo, caminhadas, corridas ao ar livre, acesso à represa, café da manhã, curadoria de restaurantes da região.
 - **Eventos (vertical relevante):** casamentos, bodas, chá revelação, confraternizações e eventos corporativos, celebrações familiares.
 - **Público:** casais (inclusive casais jovens), famílias e pessoas idosas que valorizam a natureza e buscam desacelerar.
@@ -163,9 +167,9 @@ Fonte: briefing estratégico do Hotel Lagamar (`Briefing - Hotel Lagamar.md`) e 
 - **Tom:** acolhedor, natural, humanizado. Pilares: natureza, acolhimento, família, conexão, contemplação, bem-estar, celebrações.
 - **Idioma:** português brasileiro em todo o site.
 
-⚠️ **Restrições de marca (briefing — obrigatórias):** NÃO comunicar luxo, ostentação ou exclusividade financeira. Evitar as palavras *luxo, luxuoso, premium, sofisticação ostensiva, hotelaria de luxo, alto padrão sofisticado, status social*. Nada de comparações com resorts de alto luxo. Público **não desejado**: focados em ostentação, quem não gosta de animais, quem só valoriza alto padrão sofisticado. (Detalhes em `hotel-config.json → brand_restrictions`.)
+⚠️ **Restrições de marca — "quiet luxury" (obrigatórias):** o **visual** pode ser refinado/contemporâneo (referências Aman, Six Senses, boutique mediterrâneo, Trancoso — daí a paleta areia/pérola/taupe e a serif Cormorant); a **comunicação verbal** NUNCA usa luxo/ostentação. Evitar as palavras *luxo, luxuoso, premium, sofisticação ostensiva, hotelaria de luxo, alto padrão sofisticado, status social*. Nada de comparações com resorts de alto luxo nem apelo de exclusividade financeira. Público **não desejado**: focados em ostentação, quem não gosta de animais, quem só valoriza alto padrão sofisticado. (Detalhes em `hotel-config.json → brand_restrictions`.)
 
-**Lacunas a preencher com o cliente** (marcadas `REPLACE-ME`/`TODO` em `hotel-config.json`): contato (telefone, e-mail, WhatsApp, Instagram), endereço/CEP/coordenadas, domínio, motor de reservas e webhook, demais categorias de suíte (só a "Apartamento 2 Quartos – Vista Lago" foi detalhada), nomes dos restaurantes da curadoria, e a **paleta/tipografia oficiais**.
+**Lacunas que ainda faltam** (marcadas `TODO` em `hotel-config.json`): CEP e coordenadas exatas, domínio do site, motor de reservas e webhook (hoje tudo vai pro WhatsApp), CNPJ, horários de check-in/out e diária média. **Já resolvidos:** contato, paleta/tipografia, categoria única de suíte, curadoria de restaurantes (na recepção).
 
 ## Convenções
 

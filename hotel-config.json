@@ -1,5 +1,5 @@
 {
-  "_note": "Fonte de verdade do Hotel Lagamar (Varginha/MG). Seeded a partir do briefing estratégico. Campos marcados REPLACE-ME / TODO ainda precisam dos dados reais do cliente. Mantenha em sincronia com as constantes do topo de assets/js/main.js. DESIGN: paleta/tipografia oficiais pendentes — o cliente vai enviar; até lá os tokens em `design` continuam os do template base.",
+  "_note": "Fonte de verdade do Hotel Lagamar (Varginha/MG). Preenchido com os dados reais do cliente. Reservas e formulários levam ao WhatsApp com mensagem pronta (motor de reservas/webhook ainda pendentes). Mantenha em sincronia com as constantes do topo de assets/js/main.js.",
 
   "hotel": {
     "name": "Hotel Lagamar",
@@ -7,14 +7,14 @@
     "description_short": "Hotel à beira da represa em Varginha, Minas Gerais. Arquitetura em madeira de lei, integração total com a natureza e atendimento acolhedor para casais, famílias e quem busca desacelerar.",
     "description_long": "Adquirido em 2009 por seu atual proprietário — encantado pela raridade da vista da propriedade — o Hotel Lagamar foi sendo desenvolvido para proporcionar experiências memoráveis em meio à natureza. Localizado em uma região tranquila de Minas Gerais, com vista privilegiada para a represa e estrutura construída em madeira de lei, é um refúgio para casais, famílias e pessoas que valorizam o contato com áreas verdes, o pôr do sol e o acolhimento. Com 24 suítes (e expansão planejada para 50), piscina externa e aquecida, sauna, arborismo, caminhadas e acesso à represa, o hotel também recebe casamentos, bodas e celebrações em meio à natureza.",
     "founding_principle": "Criar momentos inesquecíveis através do acolhimento, do atendimento excepcional e de uma estrutura que valoriza os momentos mais importantes da vida dos hóspedes e visitantes.",
-    "style": "Natureza, madeira de lei, vista para a represa, acolhimento familiar — autêntico e contemplativo, sem ostentação.",
+    "style": "Natureza, madeira de lei, vista para a represa, acolhimento familiar — sofisticação tranquila e contemporânea, sem ostentação.",
     "target_audience": "Casais (incluindo casais jovens), famílias e pessoas idosas que valorizam a natureza e buscam desacelerar. Também atende o mercado de eventos e celebrações.",
     "not_desired_audience": "Consumidores focados em ostentação e luxo; pessoas que não gostam de animais; perfis que valorizam exclusivamente experiências de alto padrão sofisticado.",
     "tone": "Acolhedor, natural e humanizado. Foco em natureza, família, contemplação, bem-estar e celebrações. Nunca formal nem ostensivo."
   },
 
   "brand_restrictions": {
-    "_note": "Restrições estratégicas do briefing. NUNCA usar este vocabulário/posicionamento ao escrever conteúdo do site ou blog.",
+    "_note": "TENSÃO RESOLVIDA COMO 'QUIET LUXURY': a identidade VISUAL pode ser refinada/contemporânea (referências Aman Resorts, Six Senses, boutique mediterrâneo, Trancoso); a COMUNICAÇÃO VERBAL nunca usa o vocabulário de luxo/ostentação abaixo. Refinamento calmo no visual, acolhimento sem status no texto.",
     "avoid_words": [
       "luxo", "luxuoso", "exclusividade elitizada", "sofisticação ostensiva",
       "hotelaria de luxo", "premium", "ostentação", "status social", "alto padrão sofisticado"
@@ -27,35 +27,39 @@
     "brand_essence": [
       "Natureza", "Acolhimento", "Experiências memoráveis", "Família",
       "Conexão entre pessoas", "Contemplação", "Bem-estar", "Celebrações especiais"
+    ],
+    "brand_feeling": [
+      "Hospitalidade refinada", "Conforto sem ostentação", "Conexão com a natureza",
+      "Exclusividade tranquila", "Sofisticação contemporânea"
     ]
   },
 
   "contact": {
-    "phone": "REPLACE-ME",
-    "phone_international": "REPLACE-ME",
-    "email": "REPLACE-ME",
-    "wa_number": "REPLACE-ME (formato 55 + DDD + número, sem pontuação)",
-    "instagram": "REPLACE-ME",
-    "instagram_url": "REPLACE-ME",
-    "_note": "WhatsApp é o principal canal de conversão (briefing). Atendimento humanizado e contato direto por e-mail também."
+    "phone": "(35) 99742-6463",
+    "phone_international": "+55 35 99742-6463",
+    "email": "lagamaroficial@gmail.com",
+    "wa_number": "5535997426463",
+    "instagram": "lagamarhotel",
+    "instagram_url": "https://instagram.com/lagamarhotel",
+    "_note": "WhatsApp é o principal canal de conversão. Telefone e WhatsApp usam o mesmo número. Atendimento humanizado e contato direto por e-mail também."
   },
 
   "address": {
-    "street": "REPLACE-ME",
-    "neighborhood": "REPLACE-ME",
+    "street": "Condomínio Lagamar",
+    "neighborhood": "",
     "city": "Varginha",
     "state": "MG",
-    "zip": "REPLACE-ME",
+    "zip": "TODO",
     "country": "BR",
     "coordinates": {
-      "lat": "REPLACE-ME",
-      "lng": "REPLACE-ME"
+      "lat": "TODO",
+      "lng": "TODO"
     },
-    "_note": "Região tranquila de MG, à beira da represa. ~70km de São Thomé das Letras, ~200km de Capitólio."
+    "_note": "Endereço informado pelo cliente: 'Condomínio Lagamar, Varginha - MG'. CEP e coordenadas ainda pendentes. Google Maps embed consulta por nome (q=Hotel+Lagamar,+Varginha+-+MG). À beira da represa; ~70km de São Thomé das Letras, ~200km de Capitólio."
   },
 
   "business": {
-    "cnpj": "REPLACE-ME",
+    "cnpj": "TODO",
     "number_of_units": 24,
     "number_of_units_planned": 50,
     "acquired_year": 2009,
@@ -73,9 +77,9 @@
 
   "accommodations": [
     {
-      "category": "familia",
+      "category": "padrao",
       "name": "Apartamento 2 Quartos – Vista Lago",
-      "label": "Para famílias e pequenos grupos",
+      "label": "Categoria única do hotel",
       "capacity": "Até 5 pessoas (casal + casal/2 + criança)",
       "area": "70m²",
       "highlights": [
@@ -91,7 +95,7 @@
       "image": "assets/img/placeholder.svg"
     }
   ],
-  "_accommodations_note": "O briefing só detalhou a categoria 'Apartamento 2 Quartos – Vista Lago'. O hotel tem 24 suítes em mais categorias — solicitar ao cliente as demais (nome, capacidade, área, comodidades, fotos) antes de montar a página /acomodacoes/.",
+  "_accommodations_note": "As 24 suítes são TODAS iguais — uma única categoria (Apartamento 2 Quartos – Vista Lago, 70m²). A página /acomodacoes/ deve comunicar isso como padrão único, não como um grid de tipos diferentes.",
 
   "experiences": [
     "Piscina externa",
@@ -143,7 +147,7 @@
   "_attractions_note": "Briefing cita apenas São Thomé das Letras e Capitólio. Complementar com atrações da região de Varginha (Circuito das Águas, Sul de Minas) ao montar /localizacao/.",
 
   "local_restaurants": [],
-  "_restaurants_note": "Briefing menciona 'curadoria de restaurantes da região' como experiência, mas não lista nomes. Solicitar a lista ao cliente.",
+  "_restaurants_note": "O hotel faz a curadoria de restaurantes da região DIRETO NA RECEPÇÃO, com os hóspedes. NÃO listar nomes de restaurantes no site — apenas mencionar que há indicação/curadoria na recepção.",
 
   "expansion_planned": [
     "Expansão de 24 para 50 suítes"
@@ -162,24 +166,32 @@
   ],
 
   "integrations": {
+    "_note": "Sem motor de reservas e sem webhook por enquanto. TODOS os formulários (contato, captura de WhatsApp, modal de reserva) montam uma mensagem pronta e abrem o WhatsApp do hotel. Quando houver motor/webhook, reativar em main.js.",
     "webhook_url": "https://webhook.example.com/webhook/REPLACE-ME",
     "gtm_id": "",
-    "booking_engine_url": "REPLACE-ME",
+    "booking_engine_url": "",
     "maps_embed_url": "",
-    "domain": "REPLACE-ME"
+    "domain": "TODO"
   },
 
   "design": {
-    "_note": "PENDENTE — paleta e tipografia oficiais do Hotel Lagamar serão enviadas pelo cliente. Valores abaixo ainda são os do template base; NÃO tratar como definitivos. Direção provável (briefing): madeira de lei + represa, sóbrio, sem estética de luxo.",
-    "primary": "#5b7a3d",
-    "primary_dark": "#1a4922",
-    "accent": "#0a6427",
-    "cta": "#f6b230",
-    "cta_secondary": "#96804b",
-    "highlight": "#adb11d",
-    "bg": "#ffffff",
-    "text": "#000000",
-    "font_display": "Pinyon Script",
+    "_note": "Paleta oficial do Hotel Lagamar (quiet luxury). Tipografia: display = Cormorant Garamond (serif refinada, estética Aman/boutique); corpo = Raleway. As fontes foram escolhidas para combinar com a marca — fáceis de trocar se o cliente definir outras.",
+    "palette_full": {
+      "areia_dourada": "#BEA178",
+      "branco_perola": "#F7F4EF",
+      "marrom_taupe": "#7A6652",
+      "verde_salvia": "#8C9681",
+      "azul_profundo": "#365C73"
+    },
+    "bg": "#F7F4EF",
+    "section_highlight": "#BEA178",
+    "heading": "#7A6652",
+    "text": "#5D5145",
+    "accent": "#BEA178",
+    "accent_natural": "#8C9681",
+    "cta": "#365C73",
+    "cta_hover": "#284656",
+    "font_display": "Cormorant Garamond",
     "font_body": "Raleway"
   },
 
