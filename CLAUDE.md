@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Site do **Hotel Lagamar** (Varginha/MG), construído a partir de um template-modelo de site de pousada (base Komplexa Hotéis). Site estático em HTML5, CSS3 e JavaScript vanilla — sem build, sem framework, sem `package.json`, sem testes. Português do Brasil em todo o conteúdo.
 
-**Estado atual:** `hotel-config.json` populado com os dados reais do Lagamar; **paleta e tipografia oficiais já aplicadas** em `assets/css/style.css` (quiet luxury: areia/pérola/taupe/sálvia/azul + Cormorant Garamond/Raleway); **todos os formulários levam ao WhatsApp** com mensagem pronta (sem motor de reservas/webhook por enquanto). O que **ainda falta**: reescrever o **conteúdo textual e as imagens** das páginas, que continuam herdados do template-modelo (Pousada Vale das Araucárias) — esse é o próximo passo, feito junto com o cliente. O briefing real está em `Briefing - Hotel Lagamar.md`; o `README.md` mantém o passo a passo genérico de replicação do template.
+**Estado atual:** site **semi-pronto**. `hotel-config.json` com dados reais; **paleta e tipografia oficiais aplicadas** em `assets/css/style.css` (quiet luxury: areia/pérola/taupe/sálvia/azul + Cormorant Garamond/Raleway); **todos os formulários levam ao WhatsApp** com mensagem pronta (sem motor de reservas/webhook); **conteúdo de todas as páginas reescrito** para o Lagamar (home, sobre, experiência, acomodações, galeria, localização, contato, blog + 1 post `o-que-fazer-no-sul-de-minas`), com `sitemap.xml`/`robots.txt`/`blog-plan.json` atualizados e domínio provisório `https://www.hotellagamar.com.br`. **O que falta:** trocar os **placeholders de imagem** por fotos reais (todo `<img>`/`background-image` aponta para `placeholder.svg`; os textos `alt` documentam a foto esperada em cada ponto) e preencher os `TODO` do config (CEP/coordenadas, domínio definitivo, CNPJ, horários, motor de reservas). O briefing real está em `Briefing - Hotel Lagamar.md`; o `README.md` mantém o passo a passo genérico do template.
 
 ## Desenvolvimento
 
@@ -28,7 +28,7 @@ Cada página é um diretório com `index.html` para URLs limpas:
 /                            Home (hero + strip + prévias de sobre/experiências/quartos/blog + CTA)
 /sobre/                      Sobre, história
 /experiencia/                Atividades (Cavalgada, Pescaria, Quadriciclo, Pet, etc.)
-/acomodacoes/                4 chalés em grid (sem filtros)
+/acomodacoes/                Suíte única "Apartamento 2 Quartos – Vista Lago" (24 iguais); destaque + cards de ambientes
 /galeria/                    Galeria completa com lightbox (sem filtros — array único)
 /localizacao/                Mapa + atrações próximas
 /contato/                    Formulário + mapa

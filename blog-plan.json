@@ -1,9 +1,9 @@
 {
-  "_template_note": "Plano editorial ficcional do template-modelo. Substitua tópicos, palavras-chave e público-alvo pelos dados do cliente real.",
+  "_note": "Plano editorial do Hotel Lagamar (Varginha/MG). Tom 'quiet luxury': natureza, acolhimento, família, contemplação, bem-estar e celebrações. NUNCA usar vocabulário de luxo/ostentação. Não inventar distâncias além dos fatos (São Thomé das Letras ~70km; Capitólio ~200km).",
 
   "editorial_strategy": {
-    "goal": "Atrair tráfego orgânico qualificado de famílias interessadas em turismo rural, Serra Geral e experiências com animais, convertendo em reservas diretas",
-    "tone": "Informativo e acolhedor, com CTAs sutis para reserva. Escrita em português brasileiro, familiar e caloroso, como uma conversa entre amigos.",
+    "goal": "Atrair tráfego orgânico qualificado de casais e famílias interessados em natureza, Sul de Minas e dias para desacelerar, convertendo em reservas diretas pelo WhatsApp",
+    "tone": "Informativo e acolhedor, natural e humanizado, com CTAs sutis para reserva. Português brasileiro, caloroso, sem formalidade nem ostentação.",
     "word_count": "800-1200",
     "target_keywords_per_post": 3,
     "internal_links_per_post": 2,
@@ -12,40 +12,45 @@
     "content_pillars": [
       {
         "pillar": "Destino",
-        "description": "O que fazer, onde ir, roteiros pela Serra Geral e região de Campos do Pinhão",
-        "example_topics": ["Cachoeiras imperdíveis na Serra Geral", "O que fazer em Campos do Pinhão e arredores", "Roteiro de 3 dias na Serra Geral"]
+        "description": "O que fazer, onde ir, roteiros pelo Sul de Minas a partir de Varginha (São Thomé das Letras, Capitólio, Lago de Furnas, represa)",
+        "example_topics": ["O que fazer no Sul de Minas a partir de Varginha", "Roteiro de 3 dias no Sul de Minas", "Capitólio e o Lago de Furnas: como visitar"]
       },
       {
         "pillar": "Experiência",
-        "description": "Vivências na pousada: animais, cavalgadas, pescaria, vida no campo, gastronomia serrana",
-        "example_topics": ["Passeio a cavalo na Serra Geral", "Pescaria em família: diversão no lago", "Colheita de frutas na serra"]
+        "description": "Vivências no hotel: natureza, caminhadas, arborismo, piscina, café da manhã, pôr do sol na represa",
+        "example_topics": ["O pôr do sol na represa: o melhor fim de tarde do Sul de Minas", "Café da manhã com vista para o lago", "Um dia de desacelerar no Hotel Lagamar"]
       },
       {
-        "pillar": "Família",
-        "description": "Dicas para viagens em família, atividades para crianças, benefícios do contato com animais e natureza",
-        "example_topics": ["Atividades para crianças na serra", "Benefícios do contato com animais para crianças", "Férias em família no campo"]
+        "pillar": "Celebrações",
+        "description": "Casamentos, bodas e celebrações em meio à natureza, com vista para a represa",
+        "example_topics": ["Casamentos na natureza no Sul de Minas", "Bodas e celebrações à beira da represa", "Como planejar um evento em meio à natureza"]
       },
       {
         "pillar": "Dicas práticas",
-        "description": "Informações úteis para quem visita a Serra Geral",
-        "example_topics": ["O que levar para a Serra Geral", "Melhor época para visitar a serra", "Como chegar a Campos do Pinhão"]
+        "description": "Informações úteis para quem visita Varginha e o Sul de Minas",
+        "example_topics": ["Melhor época para visitar o Sul de Minas", "Como chegar a Varginha", "Viagem de casal no Sul de Minas: o que considerar"]
       }
     ]
   },
 
   "seo_rules": {
-    "title_format": "{Título do Post} | Blog Pousada Vale das Araucárias",
+    "title_format": "{Título do Post} | Blog Hotel Lagamar",
     "meta_description_max_chars": 155,
     "url_slug_format": "lowercase, hifenizado, sem acentos, max 5 palavras",
     "heading_structure": "H1 único (título), H2 para seções, H3 para subseções",
     "schema_type": "BlogPosting",
-    "canonical_base": "https://pousadavaledasaraucarias.com.br/blog/",
+    "canonical_base": "https://www.hotellagamar.com.br/blog/",
     "open_graph_type": "article",
     "required_meta": [
       "title", "meta description", "canonical", "og:title", "og:description",
       "og:url", "og:type", "og:image", "twitter:card", "article:published_time"
     ]
   },
+
+  "region_keywords": [
+    "Varginha", "Sul de Minas", "Minas Gerais", "represa",
+    "São Thomé das Letras", "Capitólio", "Lago de Furnas", "hotel na natureza"
+  ],
 
   "post_template": {
     "filename_pattern": "blog/{slug}/index.html",
@@ -55,68 +60,54 @@
       "CTA final (link para reserva ou contato)",
       "Links internos naturais no texto"
     ],
-    "footer_cta": "Hospede-se na Pousada Vale das Araucárias — seu refúgio rural na Serra Geral, com cavalgadas inclusas e natureza de tirar o fôlego."
+    "footer_cta": "Hospede-se no Hotel Lagamar — seu refúgio em meio à natureza, à beira da represa em Varginha, com vista, acolhimento e tempo para desacelerar."
   },
 
   "published": [
     {
-      "topic": "Cachoeiras imperdíveis perto de Campos do Pinhão na Serra Geral",
+      "topic": "O que fazer no Sul de Minas a partir de Varginha",
       "pillar": "Destino",
-      "target_keywords": ["cachoeiras serra geral", "cachoeira campos do pinhão", "cachoeiras vale dos pinhões"],
-      "published_date": "2026-04-19",
-      "slug": "cachoeiras-serra-geral"
+      "target_keywords": ["o que fazer no sul de minas", "turismo varginha", "sul de minas a partir de varginha"],
+      "published_date": "2026-06-19",
+      "slug": "o-que-fazer-no-sul-de-minas"
     }
   ],
 
   "upcoming": [
     {
-      "topic": "Passeio a cavalo na Serra Geral: o que esperar e por que as crianças amam",
-      "pillar": "Experiência",
-      "target_keywords": ["passeio a cavalo serra geral", "cavalgada campos do pinhão", "passeio a cavalo crianças"],
-      "target_date": "2026-04-25",
-      "slug": "passeio-cavalo-serra-geral"
-    },
-    {
-      "topic": "O que fazer em Campos do Pinhão: guia completo para famílias",
+      "topic": "São Thomé das Letras: roteiro e o que conhecer perto de Varginha",
       "pillar": "Destino",
-      "target_keywords": ["campos do pinhão o que fazer", "turismo campos do pinhão", "campos do pinhão serra geral"],
-      "target_date": "2026-05-02",
-      "slug": "o-que-fazer-campos-do-pinhao"
+      "target_keywords": ["são thomé das letras", "são thomé das letras o que fazer", "são thomé das letras varginha"],
+      "target_date": "2026-06-26",
+      "slug": "sao-thome-das-letras-roteiro"
     },
     {
-      "topic": "Benefícios do contato com animais para crianças: como a vida no campo transforma",
-      "pillar": "Família",
-      "target_keywords": ["contato com animais crianças", "benefícios animais crianças", "fazenda crianças RS"],
-      "target_date": "2026-05-09",
-      "slug": "contato-animais-criancas-beneficios"
-    },
-    {
-      "topic": "Serra do Vale Azul: como visitar o mirante mais famoso da região",
+      "topic": "Capitólio e o Lago de Furnas: como planejar o passeio",
       "pillar": "Destino",
-      "target_keywords": ["serra do vale azul", "mirante serra geral", "serra geral pontos turísticos"],
-      "target_date": "2026-05-16",
-      "slug": "serra-vale-azul-como-visitar"
+      "target_keywords": ["capitólio", "lago de furnas", "capitólio sul de minas"],
+      "target_date": "2026-07-03",
+      "slug": "capitolio-lago-de-furnas"
     },
     {
-      "topic": "O que levar para uma viagem à Serra Geral com crianças",
+      "topic": "Casamentos na natureza no Sul de Minas: celebrar com vista para a represa",
+      "pillar": "Celebrações",
+      "target_keywords": ["casamento na natureza sul de minas", "casamento ao ar livre varginha", "casamento na represa"],
+      "target_date": "2026-07-10",
+      "slug": "casamento-na-natureza-sul-de-minas"
+    },
+    {
+      "topic": "Viagem de casal e família no Sul de Minas: como montar dias para desacelerar",
       "pillar": "Dicas práticas",
-      "target_keywords": ["o que levar serra geral", "viagem serra geral crianças", "dicas serra geral"],
-      "target_date": "2026-05-23",
-      "slug": "o-que-levar-serra-geral"
+      "target_keywords": ["viagem de casal sul de minas", "viagem em família minas gerais", "destino para desacelerar minas"],
+      "target_date": "2026-07-17",
+      "slug": "viagem-casal-familia-sul-de-minas"
     },
     {
-      "topic": "Inverno na Serra Geral: neve, sincelo e experiências únicas",
-      "pillar": "Destino",
-      "target_keywords": ["inverno serra geral", "neve campos do pinhão", "sincelo serra geral"],
-      "target_date": "2026-05-30",
-      "slug": "inverno-serra-geral"
-    },
-    {
-      "topic": "Pousada pet friendly na Serra Geral: viaje com seu melhor amigo",
+      "topic": "Café da manhã e pôr do sol na represa: os dois melhores momentos do dia",
       "pillar": "Experiência",
-      "target_keywords": ["pousada pet friendly serra geral", "viajar com cachorro serra", "hotel pet RS"],
-      "target_date": "2026-06-06",
-      "slug": "pousada-pet-friendly-serra"
+      "target_keywords": ["pôr do sol represa varginha", "café da manhã hotel na natureza", "hotel com vista para a represa"],
+      "target_date": "2026-07-24",
+      "slug": "cafe-da-manha-por-do-sol-represa"
     }
   ]
 }
