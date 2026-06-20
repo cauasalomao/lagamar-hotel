@@ -1,5 +1,5 @@
 {
-  "_note": "Plano editorial do Hotel Lagamar (Varginha/MG). Tom 'quiet luxury': natureza, acolhimento, família, contemplação, bem-estar e celebrações. NUNCA usar vocabulário de luxo/ostentação. Não inventar distâncias além dos fatos (São Thomé das Letras ~70km; Capitólio ~200km).",
+  "_note": "Plano editorial do Lagamar Resort e Hotel (Varginha/MG). Tom 'quiet luxury': natureza, acolhimento, família, contemplação, bem-estar e celebrações. NUNCA usar vocabulário de luxo/ostentação. Não inventar distâncias além dos fatos (São Thomé das Letras ~70km; Capitólio ~200km).",
 
   "editorial_strategy": {
     "goal": "Atrair tráfego orgânico qualificado de casais e famílias interessados em natureza, Sul de Minas e dias para desacelerar, convertendo em reservas diretas pelo WhatsApp",
@@ -18,7 +18,7 @@
       {
         "pillar": "Experiência",
         "description": "Vivências no hotel: natureza, caminhadas, arborismo, piscina, café da manhã, pôr do sol na represa",
-        "example_topics": ["O pôr do sol na represa: o melhor fim de tarde do Sul de Minas", "Café da manhã com vista para o lago", "Um dia de desacelerar no Hotel Lagamar"]
+        "example_topics": ["O pôr do sol na represa: o melhor fim de tarde do Sul de Minas", "Café da manhã com vista para o lago", "Um dia de desacelerar no Lagamar Resort e Hotel"]
       },
       {
         "pillar": "Celebrações",
@@ -34,7 +34,7 @@
   },
 
   "seo_rules": {
-    "title_format": "{Título do Post} | Blog Hotel Lagamar",
+    "title_format": "{Título do Post} | Blog Lagamar Resort e Hotel",
     "meta_description_max_chars": 155,
     "url_slug_format": "lowercase, hifenizado, sem acentos, max 5 palavras",
     "heading_structure": "H1 único (título), H2 para seções, H3 para subseções",
@@ -60,7 +60,7 @@
       "CTA final (link para reserva ou contato)",
       "Links internos naturais no texto"
     ],
-    "footer_cta": "Hospede-se no Hotel Lagamar — seu refúgio em meio à natureza, à beira da represa em Varginha, com vista, acolhimento e tempo para desacelerar."
+    "footer_cta": "Hospede-se no Lagamar Resort e Hotel — seu refúgio em meio à natureza, à beira da represa em Varginha, com vista, acolhimento e tempo para desacelerar."
   },
 
   "published": [

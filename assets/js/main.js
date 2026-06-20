@@ -4,9 +4,9 @@
    ============================================================ */
 
 const WEBHOOK_URL = 'https://webhook.example.com/webhook/REPLACE-ME'; // sem webhook ainda; chamadas falham em silêncio (try/catch)
-const HOTEL_NAME  = 'Hotel Lagamar';
+const HOTEL_NAME  = 'Lagamar Resort e Hotel';
 const WA_NUMBER   = '5535997426463';
-const WA_MESSAGE  = 'Olá! Gostaria de mais informações sobre o Hotel Lagamar.';
+const WA_MESSAGE  = 'Olá! Gostaria de mais informações sobre o Lagamar Resort e Hotel.';
 const BOOKING_URL = 'REPLACE-ME'; // domínio do site quando definido
 const MOTOR_BASE  = 'REPLACE-ME'; // sem motor de reservas: o modal de reserva leva ao WhatsApp (ver submitBooking)
 

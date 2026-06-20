@@ -8,9 +8,9 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<title>Galeria — Hotel Lagamar | Fotos à beira da represa em Varginha</title>
-<meta name="description" content="Conheça o Hotel Lagamar em imagens: arquitetura em madeira de lei, vista para a represa, suítes, piscinas, sauna e a natureza do Sul de Minas.">
-<meta property="og:title" content="Galeria | Hotel Lagamar — Varginha, Sul de Minas">
+<title>Galeria — Lagamar Resort e Hotel | Fotos à beira da represa em Varginha</title>
+<meta name="description" content="Conheça o Lagamar Resort e Hotel em imagens: arquitetura em madeira de lei, vista para a represa, suítes, piscinas, sauna e a natureza do Sul de Minas.">
+<meta property="og:title" content="Galeria | Lagamar Resort e Hotel — Varginha, Sul de Minas">
 <meta property="og:url" content="https://www.hotellagamar.com.br/galeria/">
 <link rel="canonical" href="https://www.hotellagamar.com.br/galeria/">
 <meta name="twitter:card" content="summary_large_image">
@@ -28,10 +28,10 @@
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "Galeria — Hotel Lagamar | Fotos à beira da represa em Varginha",
-  "description": "Conheça o Hotel Lagamar em imagens: arquitetura em madeira de lei, vista para a represa, suítes, piscinas, sauna e a natureza do Sul de Minas.",
+  "name": "Galeria — Lagamar Resort e Hotel | Fotos à beira da represa em Varginha",
+  "description": "Conheça o Lagamar Resort e Hotel em imagens: arquitetura em madeira de lei, vista para a represa, suítes, piscinas, sauna e a natureza do Sul de Minas.",
   "url": "https://www.hotellagamar.com.br/galeria/",
-  "isPartOf": {"@type":"WebSite","url":"https://www.hotellagamar.com.br/","name":"Hotel Lagamar"},
+  "isPartOf": {"@type":"WebSite","url":"https://www.hotellagamar.com.br/","name":"Lagamar Resort e Hotel"},
   "breadcrumb": {
     "@type": "BreadcrumbList",
     "itemListElement": [
@@ -49,7 +49,7 @@
 <!-- HEADER -->
 <header class="hdr hero-mode" id="hdr">
   <div class="hdr-inner">
-    <a href="../index.html" class="logo"><img src="../assets/img/logo.png" alt="Hotel Lagamar" class="logo-img"></a>
+    <a href="../index.html" class="logo"><img src="../assets/img/logo.png" alt="Lagamar Resort e Hotel" class="logo-img"></a>
     <nav class="nav">
       <a href="../sobre/">Sobre</a>
       <a href="../experiencia/">Experiência</a>
@@ -125,7 +125,7 @@
   <div class="container">
     <div class="ft-grid">
       <div class="ft-brand">
-        <a href="../index.html" class="logo"><img src="../assets/img/logo.png" alt="Hotel Lagamar" class="logo-img"></a>
+        <a href="../index.html" class="logo"><img src="../assets/img/logo.png" alt="Lagamar Resort e Hotel" class="logo-img"></a>
         <p>Um refúgio à beira da represa em Varginha, no Sul de Minas. Arquitetura em madeira de lei, vista para a represa e acolhimento em meio à natureza.</p>
         <div class="ft-social">
           <a href="https://instagram.com/lagamarhotel" target="_blank" rel="noopener" aria-label="Instagram">
@@ -162,7 +162,7 @@
       </div>
     </div>
     <div class="ft-bottom">
-      <p>&copy; 2026 Hotel Lagamar &middot; Todos os direitos reservados</p>
+      <p>&copy; 2026 Lagamar Resort e Hotel &middot; Todos os direitos reservados</p>
       <p>Desenvolvido por <a href="#" target="_blank">Komplexa Hotéis</a></p>
     </div>
   </div>
@@ -188,8 +188,8 @@
 <script>
   // Lista demo de fotos — renderiza a galeria e popula o lightbox
   const GALLERY = [
-    ['fotos/por-do-sol-represa.jpg', 'Pôr do sol sobre a represa, visto do Hotel Lagamar'],
-    ['fotos/piscina-por-do-sol.jpg', 'Piscina do Hotel Lagamar com vista para a represa ao entardecer'],
+    ['fotos/por-do-sol-represa.jpg', 'Pôr do sol sobre a represa, visto do Lagamar Resort e Hotel'],
+    ['fotos/piscina-por-do-sol.jpg', 'Piscina do Lagamar Resort e Hotel com vista para a represa ao entardecer'],
     ['fotos/coqueiros-represa.jpg', 'Coqueiros e a vista da represa na propriedade'],
     ['fotos/represa-entardecer.jpg', 'A represa ao entardecer, em tons quentes'],
     ['fotos/corredor-pergolado.jpg', 'Corredor coberto em madeira, integrado ao jardim'],
@@ -205,6 +205,13 @@
          <div class="gi-ov">⊕</div>
        </div>`
     ).join('');
+    // As imagens são injetadas após o main.js rodar o observer de lazy-load,
+    // então marcamos como carregadas aqui para sair do opacity:0 inicial.
+    grid.querySelectorAll('img').forEach(img => {
+      const mark = () => img.classList.add('loaded');
+      if (img.complete && img.naturalWidth > 0) mark();
+      else { img.addEventListener('load', mark, {once:true}); img.addEventListener('error', mark, {once:true}); }
+    });
   }
   GALLERY.forEach(([path]) => LB_SRCS.push('../assets/img/' + path));
 </script>

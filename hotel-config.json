@@ -1,11 +1,11 @@
 {
-  "_note": "Fonte de verdade do Hotel Lagamar (Varginha/MG). Preenchido com os dados reais do cliente. Reservas e formulários levam ao WhatsApp com mensagem pronta (motor de reservas/webhook ainda pendentes). Mantenha em sincronia com as constantes do topo de assets/js/main.js.",
+  "_note": "Fonte de verdade do Lagamar Resort e Hotel (Varginha/MG). Preenchido com os dados reais do cliente. Reservas e formulários levam ao WhatsApp com mensagem pronta (motor de reservas/webhook ainda pendentes). Mantenha em sincronia com as constantes do topo de assets/js/main.js.",
 
   "hotel": {
-    "name": "Hotel Lagamar",
+    "name": "Lagamar Resort e Hotel",
     "tagline": "Um refúgio em meio à natureza, onde a vista e o acolhimento transformam momentos em memórias",
     "description_short": "Hotel à beira da represa em Varginha, Minas Gerais. Arquitetura em madeira de lei, integração total com a natureza e atendimento acolhedor para casais, famílias e quem busca desacelerar.",
-    "description_long": "Adquirido em 2009 por seu atual proprietário — encantado pela raridade da vista da propriedade — o Hotel Lagamar foi sendo desenvolvido para proporcionar experiências memoráveis em meio à natureza. Localizado em uma região tranquila de Minas Gerais, com vista privilegiada para a represa e estrutura construída em madeira de lei, é um refúgio para casais, famílias e pessoas que valorizam o contato com áreas verdes, o pôr do sol e o acolhimento. Com 24 suítes (e expansão planejada para 50), piscina externa e aquecida, sauna, arborismo, caminhadas e acesso à represa, o hotel também recebe casamentos, bodas e celebrações em meio à natureza.",
+    "description_long": "Adquirido em 2009 por seu atual proprietário — encantado pela raridade da vista da propriedade — o Lagamar Resort e Hotel foi sendo desenvolvido para proporcionar experiências memoráveis em meio à natureza. Localizado em uma região tranquila de Minas Gerais, com vista privilegiada para a represa e estrutura construída em madeira de lei, é um refúgio para casais, famílias e pessoas que valorizam o contato com áreas verdes, o pôr do sol e o acolhimento. Com 24 suítes (e expansão planejada para 50), piscina externa e aquecida, sauna, arborismo, caminhadas e acesso à represa, o hotel também recebe casamentos, bodas e celebrações em meio à natureza.",
     "founding_principle": "Criar momentos inesquecíveis através do acolhimento, do atendimento excepcional e de uma estrutura que valoriza os momentos mais importantes da vida dos hóspedes e visitantes.",
     "style": "Natureza, madeira de lei, vista para a represa, acolhimento familiar — sofisticação tranquila e contemporânea, sem ostentação.",
     "target_audience": "Casais (incluindo casais jovens), famílias e pessoas idosas que valorizam a natureza e buscam desacelerar. Também atende o mercado de eventos e celebrações.",
@@ -175,7 +175,7 @@
   },
 
   "design": {
-    "_note": "Paleta oficial do Hotel Lagamar (quiet luxury). Tipografia: display = Cormorant Garamond (serif refinada, estética Aman/boutique); corpo = Raleway. As fontes foram escolhidas para combinar com a marca — fáceis de trocar se o cliente definir outras.",
+    "_note": "Paleta oficial do Lagamar Resort e Hotel (quiet luxury). Tipografia: display = Cormorant Garamond (serif refinada, estética Aman/boutique); corpo = Raleway. As fontes foram escolhidas para combinar com a marca — fáceis de trocar se o cliente definir outras.",
     "palette_full": {
       "areia_dourada": "#BEA178",
       "branco_perola": "#F7F4EF",
@@ -212,6 +212,6 @@
       "São Thomé das Letras", "Capitólio", "hotel na natureza"
     ],
     "internal_link_targets": ["acomodacoes", "experiencia", "contato", "galeria"],
-    "cta_default": "Reserve sua estadia no Hotel Lagamar"
+    "cta_default": "Reserve sua estadia no Lagamar Resort e Hotel"
   }
 }
