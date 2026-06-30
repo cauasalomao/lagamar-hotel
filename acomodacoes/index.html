@@ -35,6 +35,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <link rel="stylesheet" href="../assets/css/style.css">
 
+<!-- ═══ LIGHTBOX DAS ACOMODAÇÕES (escopo desta página) ═══ -->
+<style>
+  /* capas dos cards são clicáveis */
+  .rc-img { cursor:pointer; }
+
+  /* overlay escuro, escondido por padrão */
+  .ac-lb { position:fixed; inset:0; z-index:2000; display:none;
+           align-items:center; justify-content:center;
+           background:rgba(0,0,0,.85); padding:2rem; }
+  .ac-lb.open { display:flex; }
+
+  /* imagem ampliada — nunca ultrapassa a tela */
+  .ac-lb img { max-width:90vw; max-height:85vh; object-fit:contain;
+               box-shadow:0 10px 40px rgba(0,0,0,.5); }
+
+  /* botão fechar */
+  .ac-lb-close { position:absolute; top:1rem; right:1.4rem; background:none; border:none;
+                 color:#fff; font-size:2.4rem; line-height:1; cursor:pointer; }
+
+  /* setas anterior/próxima */
+  .ac-lb-nav { position:absolute; top:50%; transform:translateY(-50%);
+               background:rgba(0,0,0,.35); border:none; color:#fff; font-size:2rem;
+               padding:.4rem .9rem; cursor:pointer; user-select:none; }
+  .ac-lb-prev { left:1rem; }
+  .ac-lb-next { right:1rem; }
+  .ac-lb-nav:hover, .ac-lb-close:hover { opacity:.7; }
+
+  /* mobile: imagem e setas menores */
+  @media (max-width:640px){
+    .ac-lb img { max-width:94vw; max-height:80vh; }
+    .ac-lb-nav { font-size:1.5rem; padding:.3rem .7rem; }
+    .ac-lb-close { font-size:2rem; top:.6rem; right:1rem; }
+  }
+</style>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -111,7 +146,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <div class="sec-head c">
       <p class="overline">24 suítes, um único padrão</p>
-      <h2>Apartamento 2 Quartos — Vista Lago</h2>
+      <h2>Dois Quartos, Uma Vista para o Lago</h2>
       <div class="divider cx"></div>
       <p>No Lagamar Resort e Hotel todas as 24 suítes são iguais: o mesmo apartamento de 70m², com dois quartos, duas casas de banho e varanda voltada para o lago, o jardim e o rio. Assim, cada hóspede encontra o mesmo conforto e a mesma vista, independentemente da suíte reservada.</p>
     </div>
@@ -121,6 +156,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- Apartamento em destaque -->
       <div class="rc rc-wide">
+        <div class="rc-img" onclick="acLbOpen('apartamento')"><img src="../assets/img/fotos/foto-vista-lagamar1.jpeg" alt="Mesa posta na varanda do apartamento com vista para o pôr do sol sobre a represa do Lagamar"></div>
         <div class="rc-b">
           <h3>O apartamento</h3>
           <p>Um espaço amplo e tranquilo, pensado para casais, famílias e pequenos grupos. A varanda abre para a vista do lago, do jardim e do rio — um convite a desacelerar e acompanhar o pôr do sol. Estrutura completa, com a mesma vista e o mesmo conforto em todas as suítes.</p>
@@ -143,6 +179,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- Varanda com vista -->
       <div class="rc">
+        <div class="rc-img" onclick="acLbOpen('varanda')"><img src="../assets/img/fotos/foto-cozinha-lagamar7.jpeg" alt="Área de estar da suíte com vista para a represa através das janelas"></div>
         <div class="rc-b">
           <h3>Varanda com vista</h3>
           <p>Parte da mesma suíte: uma varanda voltada para o lago, o jardim e o rio. É o ponto de encontro da estadia — o lugar para o café da manhã com calma, a leitura sem pressa e o fim de tarde acompanhando o sol descer sobre a água.</p>
@@ -161,6 +198,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- Os dois quartos -->
       <div class="rc">
+        <div class="rc-img" onclick="acLbOpen('quartos')"><img src="../assets/img/fotos/foto-cama-lagamar10.jpeg" alt="Quarto da suíte com cama de casal e enxoval claro"></div>
         <div class="rc-b">
           <h3>Dois quartos</h3>
           <p>Ainda dentro da mesma acomodação: uma suíte com cama king size e um segundo quarto com cama de casal e cama de solteiro. A organização acomoda com folga casais, famílias e pequenos grupos — até 5 pessoas, com privacidade para cada um.</p>
@@ -180,6 +218,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- Duas casas de banho -->
       <div class="rc">
+        <div class="rc-img" onclick="acLbOpen('banhos')"><img src="../assets/img/fotos/foto-pia-lagamar5.jpeg" alt="Casa de banho privativa da suíte com pia e bancada"></div>
         <div class="rc-b">
           <h3>Duas casas de banho</h3>
           <p>A mesma suíte conta com duas casas de banho privativas — comodidade que faz diferença quando se viaja em família ou em grupo. Tudo pensado para que a rotina da manhã e da noite flua com tranquilidade, sem espera.</p>
@@ -319,6 +358,80 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </div>
+
+<!-- ═══ LIGHTBOX DAS ACOMODAÇÕES — overlay + lógica (escopo desta página) ═══ -->
+<div class="ac-lb" id="acLb" aria-hidden="true">
+  <button class="ac-lb-close" onclick="acLbClose()" aria-label="Fechar">&times;</button>
+  <button class="ac-lb-nav ac-lb-prev" onclick="acLbNav(-1)" aria-label="Anterior">&#10094;</button>
+  <img id="acLbImg" src="" alt="Foto da acomodação ampliada">
+  <button class="ac-lb-nav ac-lb-next" onclick="acLbNav(1)" aria-label="Próxima">&#10095;</button>
+</div>
+
+<script>
+(function(){
+  const BASE = '../assets/img/fotos/';
+
+  // Galerias temáticas por card (ordem definida pelo cliente)
+  const GALLERIES = {
+    apartamento: ['foto-vista-lagamar1.jpeg'],                                                         // só zoom, sem setas
+    varanda:     ['foto-vista-lagamar1.jpeg','foto-cozinha-lagamar7.jpeg','foto-sala-agamar3.jpeg','foto-tv-lagamar8.jpeg'],
+    quartos:     ['foto-cama-lagamar10.jpeg','foto-cama-lagamar11.jpeg','foto-correddor-lagamar9.jpeg','foto-poltronas-lagamar12.jpeg','foto-vistapoltrona-lagamar2.jpeg'],
+    banhos:      ['foto-pia-lagamar5.jpeg','foto-banheiro-lagamar6.jpeg','foto-chuveiro-lagamar4.jpeg']
+  };
+
+  let current = [];  // arquivos da galeria aberta
+  let idx = 0;       // índice da foto atual
+
+  const lb   = document.getElementById('acLb');
+  const img  = document.getElementById('acLbImg');
+  const prev = lb.querySelector('.ac-lb-prev');
+  const next = lb.querySelector('.ac-lb-next');
+
+  // renderiza a foto atual e decide se as setas aparecem
+  function show(){
+    img.src = BASE + current[idx];
+    const multi = current.length > 1;            // setas só com mais de uma foto
+    prev.style.display = multi ? '' : 'none';
+    next.style.display = multi ? '' : 'none';
+  }
+
+  // abre o lightbox numa galeria (key = nome do card)
+  window.acLbOpen = function(key){
+    current = GALLERIES[key] || [];
+    if(!current.length) return;
+    idx = 0;
+    show();
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';     // trava o scroll de fundo
+  };
+
+  // fecha o lightbox
+  window.acLbClose = function(){
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  };
+
+  // navega (circular); ignorado quando há só uma foto
+  window.acLbNav = function(dir){
+    if(current.length < 2) return;
+    idx = (idx + dir + current.length) % current.length;
+    show();
+  };
+
+  // fechar clicando no fundo (não na imagem nem nos botões)
+  lb.addEventListener('click', function(e){ if(e.target === lb) acLbClose(); });
+
+  // teclado: ESC fecha, ← → navegam (só com o lightbox aberto)
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape')          acLbClose();
+    else if(e.key === 'ArrowLeft')  acLbNav(-1);
+    else if(e.key === 'ArrowRight') acLbNav(1);
+  });
+})();
+</script>
 
 <script src="../assets/js/main.js"></script>
 </body>
