@@ -45,6 +45,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/thin/style.css">
   <link rel="stylesheet" href="assets/css/style.css?v=6">
 
+  <!-- ═══ ZOOM DAS FOTOS DOS CARDS DA HOME (escopo desta página) ═══ -->
+  <style>
+    .rfeat-img { cursor:pointer; }                    /* indica clicável */
+    .home-lb { position:fixed; inset:0; z-index:2000; display:none;
+               align-items:center; justify-content:center;
+               background:rgba(0,0,0,.85); padding:2rem; }
+    .home-lb.open { display:flex; }
+    .home-lb img { max-width:90vw; max-height:85vh; object-fit:contain;   /* nunca ultrapassa a tela */
+                   box-shadow:0 10px 40px rgba(0,0,0,.5); }
+    .home-lb-close { position:absolute; top:1rem; right:1.4rem; background:none; border:none;
+                     color:#fff; font-size:2.4rem; line-height:1; cursor:pointer; }
+    .home-lb-close:hover { opacity:.7; }
+    @media(max-width:640px){
+      .home-lb img { max-width:94vw; max-height:80vh; }
+      .home-lb-close { font-size:2rem; top:.6rem; right:1rem; }
+    }
+  </style>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -439,6 +457,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
   </div>
+
+  <!-- ═══ ZOOM DAS FOTOS DOS CARDS DA HOME — overlay + lógica (só-zoom, sem setas) ═══ -->
+  <div class="home-lb" id="homeLb" aria-hidden="true">
+    <button class="home-lb-close" onclick="homeLbClose()" aria-label="Fechar">&times;</button>
+    <img id="homeLbImg" src="" alt="">
+  </div>
+
+  <script>
+  (function(){
+    const lb  = document.getElementById('homeLb');
+    const img = document.getElementById('homeLbImg');
+
+    // abre o zoom a partir da foto clicada
+    function open(src, alt){
+      img.src = src; img.alt = alt || '';
+      lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';        // trava o scroll de fundo
+    }
+    window.homeLbClose = function(){
+      lb.classList.remove('open'); lb.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    };
+
+    // liga o clique nas 4 fotos dos cards (sem alterar o HTML deles)
+    document.querySelectorAll('.rfeat-img img').forEach(function(el){
+      el.addEventListener('click', function(){ open(el.src, el.alt); });
+    });
+
+    lb.addEventListener('click', function(e){ if(e.target === lb) homeLbClose(); });   // fecha no fundo
+    document.addEventListener('keydown', function(e){                                   // ESC fecha
+      if(lb.classList.contains('open') && e.key === 'Escape') homeLbClose();
+    });
+  })();
+  </script>
 
   <script src="assets/js/main.js"></script>
 </body>
