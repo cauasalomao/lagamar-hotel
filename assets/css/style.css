@@ -402,28 +402,29 @@ img.loaded { opacity:1; }
 
 @media print { .bk-modal { display:none!important; } }
 @media(max-width:480px) {
-  /* Modal de reserva compacto: tudo cabe sem rolagem longa, botão do WhatsApp visível */
-  .bk-modal { padding:.5rem; align-items:flex-start; }
-  .bk-modal-box { max-height:96vh; }
-  .bk-header { padding:1.1rem 3.4rem .3rem 1.1rem; gap:.7rem; }
-  .bk-header img.bk-logo { height:30px; }
-  .bk-header h3 { font-size:.95rem; }
-  .bk-header p { font-size:.72rem; }
-  .bk-close { top:.7rem; right:.7rem; width:32px; height:32px; font-size:1.25rem; }
-  .bk-form { padding:.8rem 1.1rem 1.1rem; }
-  .bk-summary { padding:.5rem .7rem; gap:.5rem; margin-bottom:.6rem; }
+  /* Modal de reserva: tudo numa tela só, sem rolagem, botão do WhatsApp sempre visível */
+  .bk-modal { padding:.4rem; align-items:flex-start; }
+  .bk-modal-box { max-height:97vh; }
+  .bk-header { padding:.9rem 3rem .2rem 1.1rem; gap:.6rem; }
+  .bk-header img.bk-logo { display:none; }    /* sem logo no mobile: o título vai pra quina esquerda, longe do X */
+  .bk-header h3 { font-size:1.05rem; }
+  .bk-header p { display:none; }              /* subtítulo escondido: título fica sozinho, no canto e longe do X */
+  .bk-close { top:.6rem; right:.6rem; width:30px; height:30px; font-size:1.2rem; }
+  .bk-form { padding:.7rem 1rem .9rem; }
+  .bk-summary { padding:.45rem .65rem; gap:.45rem; margin-bottom:.5rem; }
   .bk-sum-val { font-size:.85rem; }
-  .bk-nights { font-size:.58rem; padding:.28rem .5rem; }
-  .bk-cal { padding:.6rem .6rem .7rem; margin-bottom:.6rem; }
-  .bk-cal-title { font-size:1.1rem; }
-  .bk-nav { width:30px; height:30px; font-size:1.2rem; }
-  .bk-day { min-height:32px; font-size:.8rem; }
-  .bk-week span { font-size:.55rem; padding:.15rem 0; }
-  .bk-row { grid-template-columns:1fr 1fr; gap:.6rem; margin-bottom:.6rem; }
+  .bk-nights { font-size:.58rem; padding:.26rem .48rem; }
+  .bk-cal { padding:.5rem .55rem .55rem; margin-bottom:.5rem; }
+  .bk-cal-head { margin-bottom:.4rem; }
+  .bk-cal-title { font-size:1.05rem; }
+  .bk-nav { width:28px; height:28px; font-size:1.15rem; }
+  .bk-day { min-height:30px; font-size:.8rem; }
+  .bk-week span { font-size:.55rem; padding:.1rem 0; }
+  .bk-row { grid-template-columns:1fr 1fr; gap:.55rem; margin-bottom:0; }
   .bk-form label { font-size:.62rem; }
-  .bk-form select { min-height:40px; padding:.55rem .6rem; font-size:.85rem; }
-  .bk-child-ages { gap:.6rem; margin-bottom:.5rem; }
-  .bk-submit { padding:1rem; font-size:.98rem; }
+  .bk-form select { min-height:38px; padding:.5rem .55rem; font-size:.85rem; }
+  .bk-child-ages { gap:.55rem; margin:.5rem 0 0; }
+  .bk-submit { padding:.95rem; font-size:.98rem; margin-top:.7rem; }
   .bk-submit svg { width:22px; height:22px; }
   /* Um só caminho claro para o público idoso: o botão grande já leva ao WhatsApp */
   .bk-alt { display:none; }
