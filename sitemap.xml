@@ -57,6 +57,13 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://www.hotellagamar.com.br/longa-estadia/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- %%BLOG_POSTS_START%% -->
   <url>
     <loc>https://www.hotellagamar.com.br/blog/o-que-fazer-no-sul-de-minas/</loc>
