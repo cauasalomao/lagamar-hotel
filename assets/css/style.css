@@ -399,7 +399,8 @@ img.loaded { opacity:1; }
 .bk-day.bk-end   { border-radius:0 8px 8px 0; }
 .bk-day.bk-start.bk-end { border-radius:8px; }
 .bk-day.bk-preview { background:var(--accent); }
-.bk-warn { color:#c0392b; font-size:.78rem; margin:0 0 .8rem; text-align:center; }
+.bk-warn { color:#a11827; background:#fdecea; border:1px solid #f5c6cb; border-left:4px solid #c0392b; border-radius:8px; font-size:.86rem; font-weight:600; padding:.7rem .9rem; margin:0 0 .9rem; text-align:center; line-height:1.35; }
+.bk-warn::before { content:"⚠️ "; }
 
 @media print { .bk-modal { display:none!important; } }
 @media(max-width:480px) {

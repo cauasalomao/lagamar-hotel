@@ -402,7 +402,10 @@ function submitBooking(e) {
     return;
   }
   if (adultsVal === '' || childrenVal === '') {
-    bkShowWarn('Selecione a quantidade de adultos e crianças.');
+    const faltando = [];
+    if (adultsVal === '')   faltando.push('adultos');
+    if (childrenVal === '') faltando.push('crianças');
+    bkShowWarn(`Selecione a quantidade de ${faltando.join(' e ')} para continuar.`);
     return;
   }
 
