@@ -362,6 +362,7 @@ function bkSummary() {
 }
 
 function updateChildAges() {
+  bkClearWarn();
   const n = parseInt(document.getElementById('bk-children')?.value || '0');
   const container = document.getElementById('bkChildAges');
   if (!container) return;
@@ -377,16 +378,36 @@ function updateChildAges() {
   }
 }
 
+// Mostra o aviso e rola até ele ficar visível (pra pessoa não perder no scroll do modal)
+function bkShowWarn(msg) {
+  const warn = document.getElementById('bkWarn');
+  if (!warn) return;
+  warn.textContent = msg;
+  warn.style.display = 'block';
+  warn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+function bkClearWarn() {
+  const warn = document.getElementById('bkWarn');
+  if (warn) warn.style.display = 'none';
+}
+
 function submitBooking(e) {
   e.preventDefault();
   const ci = bkState.checkin, co = bkState.checkout;
+  const adultsVal   = document.getElementById('bk-adults')?.value || '';
+  const childrenVal = document.getElementById('bk-children')?.value || '';
+
   if (!ci || !co) {
-    const warn = document.getElementById('bkWarn');
-    if (warn) warn.style.display = 'block';
+    bkShowWarn('Selecione as datas de check-in e check-out no calendário.');
     return;
   }
-  const adults = document.getElementById('bk-adults').value;
-  const nChildren = parseInt(document.getElementById('bk-children')?.value || '0');
+  if (adultsVal === '' || childrenVal === '') {
+    bkShowWarn('Selecione a quantidade de adultos e crianças.');
+    return;
+  }
+
+  const adults = adultsVal;
+  const nChildren = parseInt(childrenVal || '0');
   const childAges = [];
   for (let i = 0; i < nChildren; i++) {
     const age = document.getElementById(`bk-child-${i}`)?.value;
@@ -439,18 +460,20 @@ function submitBooking(e) {
           <div class="bk-row">
             <div class="fg">
               <label>Adultos *</label>
-              <select id="bk-adults">
+              <select id="bk-adults" onchange="bkClearWarn()">
+                <option value="" selected disabled>Selecione...</option>
                 <option value="1">1 adulto</option>
-                <option value="2" selected>2 adultos</option>
+                <option value="2">2 adultos</option>
                 <option value="3">3 adultos</option>
                 <option value="4">4 adultos</option>
                 <option value="5">5 adultos</option>
               </select>
             </div>
             <div class="fg">
-              <label>Crianças</label>
+              <label>Crianças *</label>
               <select id="bk-children" onchange="updateChildAges()">
-                <option value="0" selected>Nenhuma</option>
+                <option value="" selected disabled>Selecione...</option>
+                <option value="0">Nenhuma</option>
                 <option value="1">1 criança</option>
                 <option value="2">2 crianças</option>
                 <option value="3">3 crianças</option>
