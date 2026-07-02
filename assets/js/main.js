@@ -412,7 +412,7 @@ function submitBooking(e) {
       <div class="bk-modal-box">
         <button class="bk-close" onclick="closeBooking()" aria-label="Fechar">&times;</button>
         <div class="bk-header">
-          <img src="/assets/img/logo-gold.png" alt="${HOTEL_NAME}" class="bk-logo">
+          <img src="${logoGold}" alt="${HOTEL_NAME}" class="bk-logo">
           <div>
             <h3 id="bkTitle">Reserve sua Estadia</h3>
             <p>Preencha os dados e finalize pelo WhatsApp</p>
