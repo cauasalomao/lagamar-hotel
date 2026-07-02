@@ -237,13 +237,128 @@ document.addEventListener('visibilitychange', () => {
 
 // ── MODAL DE RESERVA → WhatsApp ──
 // Sem motor de reservas ainda: o modal coleta datas/hóspedes e envia tudo pronto pro WhatsApp.
+// Calendário visual de intervalo: clique no check-in, depois no check-out; o caminho entre
+// os dias "acende" (start → in-range → end). Navegação por mês, sem permitir datas passadas.
+const BK_MONTHS = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const BK_WEEK   = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+const bkState = { view: null, checkin: null, checkout: null, hover: null };
+
+function bkStrip(d)    { return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+function bkToday()     { return bkStrip(new Date()); }
+function bkFirstOf(d)  { return new Date(d.getFullYear(), d.getMonth(), 1); }
+function bkISO(d)      { return d ? `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}` : ''; }
+function bkParse(iso)  { if (!iso) return null; const [y,m,d] = iso.split('-').map(Number); return new Date(y, m-1, d); }
+function bkSame(a,b)   { return a && b && a.getTime() === b.getTime(); }
+function bkFmt(d)      { return d ? `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}` : ''; }
+function bkNights()    { return bkState.checkin && bkState.checkout ? Math.round((bkState.checkout - bkState.checkin)/86400000) : 0; }
+
 function openBooking() {
-  document.getElementById('bkModal')?.classList.add('open');
+  const m = document.getElementById('bkModal');
+  if (!m) return;
+  if (!bkState.view) bkState.view = bkFirstOf(bkToday());
+  bkRenderCal();
+  m.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 function closeBooking() {
   document.getElementById('bkModal')?.classList.remove('open');
   document.body.style.overflow = '';
+}
+
+// Monta o cabeçalho + grade do mês em exibição (start/end/in-range aplicados por bkPaint)
+function bkRenderCal() {
+  const cal = document.getElementById('bkCal');
+  if (!cal) return;
+  const view  = bkState.view;
+  const y = view.getFullYear(), mo = view.getMonth();
+  const today = bkToday();
+  const startDow    = new Date(y, mo, 1).getDay();
+  const daysInMonth = new Date(y, mo + 1, 0).getDate();
+  const canPrev = !(y === today.getFullYear() && mo === today.getMonth());
+
+  let cells = '';
+  for (let i = 0; i < startDow; i++) cells += '<span class="bk-day bk-empty"></span>';
+  for (let d = 1; d <= daysInMonth; d++) {
+    const date = new Date(y, mo, d);
+    const past = date < today;
+    const extra = [past ? 'bk-past' : '', bkSame(date, today) ? 'bk-today' : ''].filter(Boolean).join(' ');
+    const iso = bkISO(date);
+    cells += `<button type="button" class="bk-day ${extra}" ${past ? 'disabled' : ''} data-iso="${iso}"`
+           + ` onclick="bkPick('${iso}')" onmouseenter="bkHover('${iso}')">${d}</button>`;
+  }
+
+  cal.innerHTML =
+    `<div class="bk-cal-head">
+       <button type="button" class="bk-nav" ${canPrev ? '' : 'disabled'} onclick="bkNav(-1)" aria-label="Mês anterior">&lsaquo;</button>
+       <span class="bk-cal-title">${BK_MONTHS[mo]} ${y}</span>
+       <button type="button" class="bk-nav" onclick="bkNav(1)" aria-label="Próximo mês">&rsaquo;</button>
+     </div>
+     <div class="bk-week">${BK_WEEK.map(w => `<span>${w}</span>`).join('')}</div>
+     <div class="bk-grid" onmouseleave="bkHover(null)">${cells}</div>`;
+  bkPaint();
+}
+
+// Atualiza as classes de intervalo sem reconstruir a grade (evita flicker no hover)
+function bkPaint() {
+  const cal = document.getElementById('bkCal');
+  if (!cal) return;
+  const ci = bkState.checkin, co = bkState.checkout;
+  const end = co || (ci && !co && bkState.hover && bkState.hover > ci ? bkState.hover : null);
+  cal.querySelectorAll('.bk-day[data-iso]').forEach(btn => {
+    const date = bkParse(btn.dataset.iso);
+    btn.classList.remove('bk-start', 'bk-end', 'bk-inrange', 'bk-preview');
+    if (bkSame(date, ci)) btn.classList.add('bk-start');
+    if (co && bkSame(date, co)) btn.classList.add('bk-end');
+    if (ci && !co && end && bkSame(date, end)) btn.classList.add('bk-end', 'bk-preview');
+    if (ci && end && date > ci && date < end) btn.classList.add('bk-inrange');
+  });
+  bkSummary();
+}
+
+function bkNav(dir) {
+  const v = bkState.view;
+  bkState.view = new Date(v.getFullYear(), v.getMonth() + dir, 1);
+  bkState.hover = null;
+  bkRenderCal();
+}
+
+function bkPick(iso) {
+  const date = bkParse(iso);
+  const { checkin, checkout } = bkState;
+  if (!checkin || checkout || date <= checkin) {
+    bkState.checkin = date;   // inicia (ou reinicia) um novo intervalo
+    bkState.checkout = null;
+  } else {
+    bkState.checkout = date;  // fecha o intervalo
+  }
+  bkState.hover = null;
+  const warn = document.getElementById('bkWarn');
+  if (warn) warn.style.display = 'none';
+  bkPaint();
+}
+
+function bkHover(iso) {
+  if (bkState.checkin && !bkState.checkout) {
+    bkState.hover = bkParse(iso);
+    bkPaint();
+  }
+}
+
+// Resumo (check-in / check-out / noites) + inputs ocultos p/ submitBooking
+function bkSummary() {
+  const ci = bkState.checkin, co = bkState.checkout;
+  const inEl = document.getElementById('bkSumIn'), outEl = document.getElementById('bkSumOut');
+  if (inEl)  { inEl.textContent  = ci ? bkFmt(ci) : 'Selecione'; inEl.classList.toggle('bk-sum-set', !!ci); }
+  if (outEl) { outEl.textContent = co ? bkFmt(co) : 'Selecione'; outEl.classList.toggle('bk-sum-set', !!co); }
+  const nEl = document.getElementById('bkNights');
+  if (nEl) {
+    const n = bkNights();
+    nEl.textContent = n ? `${n} ${n === 1 ? 'noite' : 'noites'}` : '';
+    nEl.style.display = n ? '' : 'none';
+  }
+  const hi = document.getElementById('bk-checkin'), ho = document.getElementById('bk-checkout');
+  if (hi) hi.value = bkISO(ci);
+  if (ho) ho.value = bkISO(co);
 }
 
 function updateChildAges() {
@@ -264,8 +379,12 @@ function updateChildAges() {
 
 function submitBooking(e) {
   e.preventDefault();
-  const ci = document.getElementById('bk-checkin').value;
-  const co = document.getElementById('bk-checkout').value;
+  const ci = bkState.checkin, co = bkState.checkout;
+  if (!ci || !co) {
+    const warn = document.getElementById('bkWarn');
+    if (warn) warn.style.display = 'block';
+    return;
+  }
   const adults = document.getElementById('bk-adults').value;
   const nChildren = parseInt(document.getElementById('bk-children')?.value || '0');
   const childAges = [];
@@ -274,9 +393,11 @@ function submitBooking(e) {
     if (age !== undefined) childAges.push(age);
   }
   pushLead('reserva_whatsapp');
+  const n = bkNights();
   let msg = `Olá! Gostaria de fazer uma reserva no ${HOTEL_NAME}.\n\n`;
-  if (ci) msg += `*Check-in:* ${ci}\n`;
-  if (co) msg += `*Check-out:* ${co}\n`;
+  msg += `*Check-in:* ${bkFmt(ci)}\n`;
+  msg += `*Check-out:* ${bkFmt(co)}\n`;
+  msg += `*Noites:* ${n}\n`;
   msg += `*Adultos:* ${adults}\n`;
   if (nChildren) msg += `*Crianças:* ${nChildren} (idades: ${childAges.join(', ')})\n`;
   window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
@@ -298,16 +419,22 @@ function submitBooking(e) {
           </div>
         </div>
         <form onsubmit="submitBooking(event)" class="bk-form">
-          <div class="bk-row">
-            <div class="fg">
-              <label>Check-in *</label>
-              <input type="date" id="bk-checkin" required>
+          <div class="bk-summary">
+            <div class="bk-sum-item">
+              <span class="bk-sum-lbl">Check-in</span>
+              <span class="bk-sum-val" id="bkSumIn">Selecione</span>
             </div>
-            <div class="fg">
-              <label>Check-out *</label>
-              <input type="date" id="bk-checkout" required>
+            <span class="bk-sum-sep">&rarr;</span>
+            <div class="bk-sum-item">
+              <span class="bk-sum-lbl">Check-out</span>
+              <span class="bk-sum-val" id="bkSumOut">Selecione</span>
             </div>
+            <span class="bk-nights" id="bkNights" style="display:none"></span>
           </div>
+          <div class="bk-cal" id="bkCal"></div>
+          <input type="hidden" id="bk-checkin">
+          <input type="hidden" id="bk-checkout">
+          <p class="bk-warn" id="bkWarn" style="display:none">Selecione as datas de check-in e check-out no calendário.</p>
           <div class="bk-row">
             <div class="fg">
               <label>Adultos *</label>
