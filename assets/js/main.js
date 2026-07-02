@@ -419,6 +419,7 @@ function submitBooking(e) {
           </div>
         </div>
         <form onsubmit="submitBooking(event)" class="bk-form">
+          <div class="bk-scroll">
           <div class="bk-summary">
             <div class="bk-sum-item">
               <span class="bk-sum-lbl">Check-in</span>
@@ -457,6 +458,7 @@ function submitBooking(e) {
             </div>
           </div>
           <div class="bk-child-ages" id="bkChildAges"></div>
+          </div><!-- /.bk-scroll -->
           <button type="submit" class="bk-submit">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.6.1-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-1.6-.8-2.6-1.5-3.6-3.3-.3-.5.3-.5.8-1.5.1-.2 0-.3 0-.5-.1-.2-.6-1.5-.9-2-.2-.5-.4-.4-.6-.5H8c-.2 0-.5.1-.7.3-.9.9-1.1 2.2-.5 3.5.7 1.6 1.6 3 3 4.3 2 1.8 3.7 2.4 4.9 2.6.7.1 1.7.1 2.3-.4.4-.3.9-1 .9-1.8 0-.3 0-.3-.1-.4-.1-.1-.3-.2-.5-.3z"/><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm0 18.2c-1.5 0-2.9-.4-4.1-1.1l-.3-.2-3 .9.9-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
             Pedir reserva pelo WhatsApp</button>
